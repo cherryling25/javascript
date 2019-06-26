@@ -34,11 +34,47 @@
     var result = cal(100,200,add);
     console.log(result); */
 
-    var name = 'cherry';
+    /* var name = 'cherry';
     function fn(){
         name = 'jack';
     }
     fn();
-    console.log(name);
+    console.log(name); */
+    //for循环的i 也是全局变量
+    /* for (var i = 0; i < 10; i++) {
+        
+    }
+    console.log(i);     */
+        
+    //例子
+    /* var color = 'yellow';
+    function getColor(){
+        var anotherColor = 'red';
+
+        function swapColor(){
+            var tmpColor = color;//yellow
+            color = anotherColor;// red
+            anotherColor = tmpColor;//yelow
+        }
+        swapColor();
+    }
+    getColor();
+    console.log(color); */
+
+    /* //预解析
+    var num = 10;
+    function fn(){
+        //将变量的声明提前到这，var num; 
+        console.log(num);// undefined,所以这里是undefined
+        var num = 20;
+    }
+    fn(); */
+
+    console.log(fn2);//显示fn2这个函数体（先提升变量再提升函数，函数体的提升，只是不会调用）
+    function fn2(){
+        console.log('我是函数');
+    }
+    var fn2 = '我是变量';
+    console.log(fn2);//变量
 </script>
 </html>
