@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>object</title>
+</head>
+<body>
+    
+</body>
+<script>
+ //3. 工厂函数创建对象
+   /*  function createPen(name,age){
+        var p = new Object();
+        p.name = name;
+        p.age = age;
+        p.do = function(){
+        };
+        return p;
+    }
+    var li = createPen( 'ling' , 18);
+    console.log(li);
+
+    //4. 自定义构造函数
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    var li1 = new Person( 'ling' , 18);
+    console.log(li1); */
+
+   /*  var person = new Person();
+    person.id = 111;
+    function fun (person1) {
+        person = person1;
+        person1.id = 333;
+    }
+    var person2 = new Person(); 
+    person2.id = 222;
+    fun(person2); */
+
+
+    // this 关键字
+    //1. 普通函数执行
+   /*  function fn(){
+        console.log(this);  //这个this 指向的是 window
+    }
+    fn();
+ */
+
+    //2. 函数作为对象
+    /* var obj = {
+        name:'ling',
+        fn:function(){
+            console.log(this);
+            console.log(this.name);
+        }
+    }
+    obj.fn(); */
+
+    //3. 构造函数
+   /*  function Fn(){
+        this.name = 'ling';
+        this.age = 19;
+        console.log(this);
+    }
+    new Fn(); */
+</script>
+</html>
