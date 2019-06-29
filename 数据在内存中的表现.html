@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据在内存中的表现</title>
+</head>
+<body>
+    
+</body>
+<script>
+   /*  var a = 'ling';
+    var b = a ;
+    a = ' dong ';
+    console.log(a);	// dong
+    console.log(b);	// ling */
+
+    function Fn(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    var f = new Fn('ling','18');
+    var a = f;
+    a.name = 'nihao';
+    console.log(f.name);
+    
+</script>
+</html>

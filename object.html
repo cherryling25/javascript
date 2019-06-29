@@ -64,5 +64,31 @@
         console.log(this);
     }
     new Fn(); */
+
+    //遍历对象的属性
+     var a = {
+    'name': ' ling ',
+    'age': '19 ',
+    'doIT':function(){
+        console.log('哈哈');
+        }
+    };
+    //访问对象的属性的两种方式
+    /*console.log(a.name);
+    console.log(a['name']);
+
+    //遍历对象
+    for (var key in a) {
+        //console.log(key);
+        console.log(key + ':'+a[key]);
+    } */
+
+    //删除对象的属性和方法
+    delete a.age;
+    delete a.doIT;
+    console.log(a);
+    
+    a.friends = ['dong','ling'];
+    console.log(a);
 </script>
 </html>
