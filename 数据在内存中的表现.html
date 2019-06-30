@@ -8,20 +8,52 @@
     
 </body>
 <script>
+    //基本类型在内存中的存储
    /*  var a = 'ling';
     var b = a ;
     a = ' dong ';
     console.log(a);	// dong
     console.log(b);	// ling */
 
-    function Fn(name,age){
+
+    //复杂类型在内存中的存储
+    /* function Fn(name,age){
         this.name = name;
         this.age = age;
     }
     var f = new Fn('ling','18');
     var a = f;
     a.name = 'nihao';
-    console.log(f.name);
+    console.log(f.name); */
     
+
+    //基本类型作为函数的参数
+    /* var num1 = 10, num2 = 20;
+        fn(num1, num2);
+        console.log(num1,num2);
+
+        function fn(n1, n2){
+            n1 *= 2;
+            n2 /= 2;
+        console.log('n1 = ' + n1);
+        console.log('n2 = ' + n2);
+    } */
+
+
+    //复杂类型作为函数的参数
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    
+        function func(person){
+            person.name = 'dongdong';
+
+        }
+        var p = new Person('ling','18');
+        console.log(p.name);
+        func(p);
+        console.log(p.name);
+       
 </script>
 </html>
