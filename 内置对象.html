@@ -20,7 +20,64 @@
     console.log(Array.isArray(arr)); //true
     console.log(Array.isArray('arr')); //false */
 
-    
+    //toString() / valueOf()
+    /* var arr = ['张三','李四','jack'];
+    console.log(arr);    //返回数组对象本身
+    console.log(arr.toString());    //把数组转换成字符串，逗号分隔每一项
+    console.log(arr.valueOf());     //返回数组对象本身，最真实的一种状态
+    console.log(arr.valueOf() === arr); //true */
 
+    //join()
+    /* var arr = ['张三','李四','jack'];
+    var str = arr.join('-');
+    console.log(str); */
+
+    //push()和 pop()
+   /*  var arr = ['张三','李四','jack'];
+    console.log(arr.push('你好'));  //返回数组的总长度
+    console.log(arr); 
+
+    console.log(arr.pop());  //返回移除的项
+    console.log(arr); */
+
+    //shift() 和 unshift()
+   /*  var arr = ['张三','李四','jack'];
+    console.log(arr.shift());   //删除数组第一项，并返回删除元素的值
+    console.log(arr); 
+
+    console.log(arr.unshift('12345','67890'));  //将参数添加到原数组开头，并返回数组的长度
+    console.log(arr);  */
+
+    //reverse()
+    /* var arr = [1,3,5,7];
+ 	console.log(arr.reverse());     //[7,5,3,1]
+    console.log(arr);       //[7,5,3,1]	原数组改变
+ */
+
+    //concat()
+    /* var arr = ['张三','李四','jack'];
+    var arr1 = ['你好','好的'];
+    var arr2 = ['玲','玲'];
+
+    var newarr = arr.concat(arr1,arr2,'lij');  // 多个数组合并
+    console.log(arr);
+    console.log(newarr);    //产生一个新的数组，不会影响原数组 */
+
+    //indexOf() 和 lastIndexOf()
+    /* var arr = [1,3,5,7,7,5,3,5];
+    //console.log(arr);
+    //console.log(arr.indexOf(5));    //找数字5在第几位，没有设置参数二，就从第0个开始找
+    //console.log(arr.indexOf(5,2));      //第一个参数是要找的数，第二个是从第几个开始找
+    console.log(arr.lastIndexOf(5));    //如果没有参数的话，默认是从最后一个往前找，那么5在第7位，然后返回下标7
+    console.log(arr.lastIndexOf(3,4));  // 从哪个下标从后往前找，返回元素的下标
+    var a = new Array(); */
+
+    // forEach()
+    var arr = ['张三','李四','jack'];
+    arr.forEach(function(value,index,array){
+        console.log(value);
+        console.log(index);
+        console.log(array);
+    })
 </script>
 </html>
