@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>string 对象</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //charAt()		获取指定位置处字符
+    //charCodeAt()		获取指定位置处字符的 ASCLL码
+    //下标获取	        和 charAt() 效果一样
+
+    /* var str = 'itname.com';
+    //console.log(str.charAt(3));
+
+    //遍历字符串
+    for(var i = 0; i< str.length; i++){
+        console.log(str.charAt(i));
+        console.log(str.charCodeAt(i));
+        console.log(str[i]);
+    } */
+
+
+    //substr()：从 start 位置开始，需要截取几个字符
+    var str = 'itname.com';
+    //var newstr = str.substr(2,5);
+    var newstr = str.substr(str.lastIndexOf('.')+1);    // 截取到com，不加1，截取到.com
+    console.log(newstr);
+    
+</script>
+</html>
