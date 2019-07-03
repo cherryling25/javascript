@@ -24,10 +24,50 @@
 
 
     //substr()：从 start 位置开始，需要截取几个字符
-    var str = 'itname.com';
+    /* var str = 'itname.com';
     //var newstr = str.substr(2,5);
     var newstr = str.substr(str.lastIndexOf('.')+1);    // 截取到com，不加1，截取到.com
     console.log(newstr);
+     */
+
+    //去除空白
+    /* var str = '    itname.com   ';
+    console.log(str.trim()); */
+
+    //大小写转换方法
+    /* var str = 'i LIKE YOU!';    
+    console.log(str.toLowerCase());
+    console.log(str.toUpperCase()); */
+
+    /* var str = 'like you';
+    var n = str.search('ke');
+    console.log(n);	//2 */ 
+
+
+    //URL 转换成对象
     
+    function geUrlParams(url){
+        //起点
+        var index = url.indexOf('?')+1;
+        var params = url.substr(index);
+        var paramsArr = params.split('&');
+        //console.log(paramsArr);
+
+        var obj = {};
+        paramsArr.forEach(function(value,index,array){
+            var tempArr = value.split('=');
+            //console.log(tempArr);
+            var key = tempArr[0];   //[0]是key（键）
+            //console.log(key);
+            obj[key] = tempArr[1];  //[1]是value（值）
+            //console.log(obj);
+        });
+        return obj;
+    }
+    var url = 'http://www.like.com/user?name=ling&pwd=loveling&sex=女&age=19';
+    var obj = geUrlParams(url);
+    console.log(obj);
+    console.log(obj.name);
+    console.log(obj.sex);
 </script>
 </html>
