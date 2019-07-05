@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>判断数据类型</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // 对如下数据进行判断它们的类型
+    var bool = true
+    var num = 1
+    var str = 'abc'
+    var und = undefined
+    var nul = null
+    var arr = [1, 2, 3]
+    var obj = {a: 'aa', b: 'bb'}
+    var fun = function() {console.log('I am a function')}
+
+    /* console.log(typeof bool);   // boolean
+    console.log(typeof num);    // number
+    console.log(typeof str);    // string
+    console.log(typeof und);    // undefined
+    console.log(typeof nul);    // object
+    console.log(typeof arr);    // object
+    console.log(typeof obj);    // object
+    console.log(typeof fun);    // function */
+    /* typeof可以测试出number、string、boolean、undefined及function，
+    而对于null及数组、对象，typeof均检测出为object，不能进一步判断它们的类型。 */
+
+   
+    /* console.log(bool instanceof Boolean);// false
+    console.log(num instanceof Number); // false
+    console.log(str instanceof String); // false
+    console.log(arr instanceof Array);  // true
+    console.log(obj instanceof Object); // true
+    console.log(fun instanceof Function);// true
+
+    console.log(nul instanceof Object); // false
+    console.log(und instanceof Object); // false */
+
+    //instanceof不能区别undefined和null
+
+
+
+    console.log(Object.prototype.toString.call(bool));  //[object Boolean]
+    console.log(Object.prototype.toString.call(num));   //[object Number]
+    console.log(Object.prototype.toString.call(str));   //[object String]
+    console.log(Object.prototype.toString.call(und));   //[object Undefined]
+    console.log(Object.prototype.toString.call(nul));   //[object Null]
+    console.log(Object.prototype.toString.call(arr));   //[object Array]
+    console.log(Object.prototype.toString.call(obj));   //[object Object]
+    console.log(Object.prototype.toString.call(fun));   //[object Function]
+
+    /* 在任何值上调用 Object 原生的 toString() 方法，都会返回一个 [object NativeConstructorName] 格式的字符串。每个类在内部都有一个 [[Class]] 属性，这个属性中就指定了上述字符串中的构造函数名。
+但是它不能检测非原生构造函数的构造函数名。 
+    比如：console.log(Object.prototype.toString.call(dog));   //[object Object]
+    */
+
+
+    //使用jquery中的$.type  ，要先引入 jquery
+    /* console.log($.type(bool));  //boolean
+    console.log($.type(num));   //number
+    console.log($.type(str));   //string
+    console.log($.type(und));   //undefined
+    console.log($.type(nul));   //null
+    console.log($.type(arr));   //array
+    console.log($.type(obj));   //object
+    console.log($.type(fun));   //function
+
+    console.log($.type(dog));   //object */
+    //$.type()内部原理就是用的Object.prototype.toString.call()
+</script>
+</html>

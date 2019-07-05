@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>string 对象</title>
+    <title>removeduplicatednum</title>
 </head>
 <body>
     
 </body>
 <script>
+  
     //__proto__ === Person.prototype
-    function Person() {
+    /* function Person() {
         this.id = 'id';
         this.name = 'xxx';
     }
@@ -19,11 +20,21 @@
     // new Person().id = 456; // __proto__ === Person.prototype
     var person = new Person();
     
-    Person.prototype.name = 'newname';
+    Person.__proto__.name = 'newname';
 
     console.log(person.id);
-    console.log(person.name);
+    console.log(person.name); */
 
+    /* function Fn() { }
+        Fn.prototype.name = '王福朋';
+        Fn.prototype.getYear = function () {
+            return 1988;
+        };
+
+        var fn = new Fn();
+        console.log(fn.name);
+        console.log(fn.getYear());
+ */
 
     //去除重复
    /*  var nums = [0,0,1,1,1,2,2,3,3,4];
@@ -50,5 +61,24 @@
         return newArray.length;
     } */
 
+
+    //如何判断一个值是否是NaN: 等号运算符（== 和 ===） 不能被用来判断一个值是否是 NaN。
+    //必须使用 Number.isNaN() 或 isNaN() 函数。
+
+  /*   NaN === NaN;        // false
+        Number.NaN === NaN; // false
+        isNaN(NaN);         // true
+        isNaN(Number.NaN);  // true 
+
+       var a =  parseFloat('aaa');
+       document.write(a);
+        document.write(isNaN(a));
+
+     console.log(isNaN('12222'));         // false
+    console.log(isNaN(Number.NaN));  // true */
+
+
+    
+   
 </script>
 </html>
