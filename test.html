@@ -2,17 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>判断数据类型 5 种</title>
+    <title>let,var</title>
 </head>
 <body>
     
 </body>
 <script>
-
+// 与var不同，新的变量声明方式带来了一些不一样的特性，其中最重要的两个特性就是提供了块级作用域与不再具备变量提升。
+{
     let a = 20;
-    
+}
+console.log(a);  // a is not defined
 
-console.log(a); 
+// ES5
+console.log(a);   // undefined
+var a = 20;
+
+// ES6
+console.log(a); // a is not defined
+let a = 20;
+
 
 </script>
 </html>
