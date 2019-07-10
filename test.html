@@ -8,7 +8,7 @@
     
 </body>
 <script>
-// 与var不同，新的变量声明方式带来了一些不一样的特性，其中最重要的两个特性就是提供了块级作用域与不再具备变量提升。
+/* // 与var不同，新的变量声明方式带来了一些不一样的特性，其中最重要的两个特性就是提供了块级作用域与不再具备变量提升。
 {
     let a = 20;
 }
@@ -21,7 +21,15 @@ var a = 20;
 // ES6
 console.log(a); // a is not defined
 let a = 20;
+ */
 
+ //数组乱序：
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+arr.sort(function () {
+    return Math.random() - 0.5;
+    
+});
+console.log(arr);
 
 </script>
 </html>
