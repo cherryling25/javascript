@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型转换</title>
+</head>
+<body>
+    
+</body>
+<script>
+  //Number 类型转字符串类型
+/* var num = 123;
+var re = num.toString();
+console.log(re);
+console.log(typeof re); //string
+console.log(num); */
+
+
+//数值类型调用 toString() 方法，可以携带一个参数，输出对应进制的值
+/* var num = 123;
+var re = num.toString(8); //传一个8，就是将它转成八进制
+console.log(re); */
+
+
+//console.log('a' + + 'b');   //aNaN    扩展题
+
+//console.log(null.toString());   会报错
+
+//Null 和 Undefined ，不会调用 toString() 方法，而是直接转成字符串
+/* var n = null;
+var s = String(n);
+console.log(s);	// null
+console.log(typeof s);	// String */
+
+
+// 拼接字符串方式,使用：任何数据和 + " "连接到一起都会转换为字符串,内部实现原理和 String() 方法一样
+/* var n = 10010;
+var s = n + " ";
+console.log(s);	// 10010
+console.log(typeof s);	// String
+
+console.log(1+'1');  */
+</script>
+</html>
