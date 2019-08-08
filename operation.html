@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>运算符</title>
+    
+</head>
+<body>
+    
+</body>
+<script>
+//后缀表达式：即，‘先用后变’，也就是先用变量的值参与运算，变量的值再进行自增自减变化
+/* var a = 20;
+var b = 30;
+var res = (a++)+(b++);
+console.log(res,a,b);	// 50 , 21, 31
+
+var a1 = 20;
+var b1 = 30;
+var res1 = (a1--)+(b1--);
+console.log(res1,a1,b1);	// 50， 19 ，29 */
+
+//前缀表达式：即，‘先变后用’，也就是变量的值先变，再用变量的值参与运算
+var a = 20;
+var b = 30;
+var res = (++a)+(++b);
+console.log(res,a,b);	// 52 , 21, 31
+
+var a1 = 20;
+var b1 = 30;
+var res1 = (--a1)+(--b1);
+console.log(res1,a1,b1);	// 48， 19 ，29
+</script>
+</html>
