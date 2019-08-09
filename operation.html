@@ -21,7 +21,7 @@ var res1 = (a1--)+(b1--);
 console.log(res1,a1,b1);	// 50， 19 ，29 */
 
 //前缀表达式：即，‘先变后用’，也就是变量的值先变，再用变量的值参与运算
-var a = 20;
+/* var a = 20;
 var b = 30;
 var res = (++a)+(++b);
 console.log(res,a,b);	// 52 , 21, 31
@@ -29,6 +29,23 @@ console.log(res,a,b);	// 52 , 21, 31
 var a1 = 20;
 var b1 = 30;
 var res1 = (--a1)+(--b1);
-console.log(res1,a1,b1);	// 48， 19 ，29
+console.log(res1,a1,b1);	// 48， 19 ，29 */
+
+//对于非数值进行比较时，会将其转换为数值再进行比较
+console.log(1 > false);		// true
+console.log(1 > true);		// false
+console.log(1 > "10");		// false
+console.log(1 > null);		// true
+
+//如果符号两侧的值都是字符串时，不会将其转换为数字进行比较，而是分别比较字符串中字符的 Unicode 编码
+console.log('a' > 'b');		// false
+console.log('abc' > 'bea');		// false 先比较第一个字符a和b 
+
+console.log(null == 0);   // false	
+console.log(undefined == 0);	// false
+console.log(NaN == NaN);	// false
+
+console.log(null == undefined);     //true  同一个祖先
+console.log(null === undefined);    //false 比较值和类型
 </script>
 </html>
