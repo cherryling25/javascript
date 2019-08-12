@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>if 语句</title>
+    
+</head>
+<body>
+    
+</body>
+<script>
+    /* for (let i = 0; i < 3; i++) {
+    let i = "abc";
+    console.log(i);
+}
+ */
+
+//练习石头剪子布实现    0- 石头 ， 1- 剪子 ，2- 布
+
+//定义变量
+var player,computer;
+//电脑出拳
+computer = parseInt(Math.random()*3); //产生0-3之间的随机数
+console.log(computer);    //取整数
+
+//玩家出拳
+player = parseInt(+(window.prompt("请出拳：0- 石头 ， 1- 剪子 ，2- 布")));
+console.log(player);    //取整数
+
+//判断用户输入的内容
+ if(player<0|| player>2){   //不满足条件
+        player = parseInt(+(window.prompt("请重新出拳：0- 石头 ， 1- 剪子 ，2- 布")));
+
+ }else{
+    if((player===0 && computer===1) || (player===1 && computer===2)||(player===2 && computer===0)){
+        alert("你赢了");
+    }else if((player===2 && computer===1) || (player===0 && computer===2)||(player===1 && computer===0)){
+        alert("很遗憾");
+    } else{
+        alert("平局");
+    }
+ }
+</script>
+</html>
