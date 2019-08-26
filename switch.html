@@ -11,6 +11,54 @@
 <script>
   console.log(typeof typeof 1);   //显示 string 类型
 
+  /* var score;
+  score = +(window.prompt("输入一个0-100的数字"));
+
+  if (score >=90 && score<=100) {
+    alert("A");
+  } else if (score >=80 && score<=89) {
+    alert("B");
+  }else if (score >=70 && score<=79) {
+    alert("C");
+  }else if (score >=60 && score<=69) {
+    alert("D");
+  }else{
+    alert("不及格");
+  } */
+
+  /*
+  90-100  10
+  80-89   8
+  70-79   7
+  60-69   6
+  0-59    0,1,2,3,4,5
+  */
+  //switch
+   var score;
+  score = +(window.prompt("输入一个0-100的数字"));
+  switch (parseInt(score / 10)) {
+    case 10:
+    case 9:
+      alert("A");
+      break;
+    case 8:
+      alert("B");
+      break;
+    case 7:
+      alert("C");
+      break;
+    case 6:
+      alert("D");
+      break;
+    default:
+      alert("E");
+      break;
+  } 
+
+ /*  var f = "11"+2-"1";
+  console.log(typeof f);
+  console.log(f); // 112-1=111 */
+
   
 </script>
 </html>
