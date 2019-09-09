@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>while</title>
+    </head>
+<body>
+
+</body>
+<script>
+    //while 循环 100遍
+    /* var num = 0;
+    while(num<100){
+        num++;
+        console.log("love"+num);
+    } */
+
+    //计算 1+2+3+..+n 的值
+  /*  var sum = 0;
+   var num = 0;
+   while(num<=10){
+    sum+=num;
+    num++;
+   }
+   console.log(sum);
+ */
+
+   //获取 1-100 之间 7的倍数的个数并打印，并统计个数
+   /* var count = 1;
+   var num = 0;
+   while(count<=100){
+    if(count%7===0){
+        console.log(count);
+        num++;
+    }
+    count++;
+   }
+   console.log(num); */
+
+   //100以内的偶数
+   var odd = 0;
+   var num = 0;
+   while(odd<=100){
+       odd++;
+       if(odd%2!==0){
+        continue;
+       }
+       console.log(odd);
+       num++;
+   }
+   console.log(num);
+   
+   //do-while
+   var num = 2;
+        do{
+            console.log(num);
+            num++;
+        }while(num<10);
+</script>
+</html>
