@@ -1,48 +1,88 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>循环</title>
-    </head>
-    <style>
-        span{
-            display: inline-block;
-            border: 1px solid red;
-            padding: 5px;
-            margin: 5px;
+  <head>
+    <meta charset="UTF-8" />
+    <title>循环</title>
+  </head>
+  <style>
+    span {
+      display: inline-block;
+      border: 1px solid red;
+      padding: 5px;
+      margin: 5px;
+    }
+  </style>
+  <body></body>
+  <script>
+        /*
+        列表1
+            好友1
+            好友2
+            好友3
+        列表2
+            好友1
+            好友2
+            好友3
+        */
+        /* for (var i = 1; i <=2; i++) {
+            console.log('列表'+i);
+            for(var j = 1; j<=3; j++){
+                console.log('    好友'+j);
+            }
+        } */
+
+        //99乘法表
+        /* for (var i = 1; i <=9; i++) {
+            for(var j = 1; j<=i; j++){
+                document.write('<span>' + j + 'x' + i + '=' + j * i +'</span>');
+            }
+            document.write('<br>');
+        }  */
+
+        //绘制矩形
+        /* for (var i = 1; i <=3; i++) {
+            for(var j = 1; j<=4; j++){
+                document.write('*');
+            }
+            document.write('<br>');
         }
-    </style>
-<body>
-
-</body>
-<script>
-    /*
-    列表1
-        好友1
-        好友2
-        好友3
-    列表2
-        好友1
-        好友2
-        好友3
-    */
-    /* for (var i = 1; i <=2; i++) {
-        console.log('列表'+i);
-        for(var j = 1; j<=3; j++){
-            console.log('    好友'+j);
+     */
+        //绘制三角形
+        /* for (var i = 0; i <=5; i++) {
+            for(var j = 1; j<=i; j++){
+                document.write('*');
+            }
+            document.write('<br>');
         }
-    } */
+     */
+        //倒三角形
+        /* for (var i = 5; i >=0; i--) {
+            for(var j = i; j>=1; j--){
+                document.write('*');
+            }
+            document.write('<br>');
+        }  */
 
-    //99乘法表
-    /* for (var i = 1; i <=9; i++) {
-        for(var j = 1; j<=i; j++){
-            document.write('<span>' + j + 'x' + i + '=' + j * i +'</span>');
-        }
-        document.write('<br>');
-    }  */
+        /*
+            1
+            12
+            123
+        */
+        /* for (var i = 0; i <=3; i++) {
+            for(var j = 1; j<=i; j++){
+                document.write(j);
+            }
+            document.write('<br>');
+        } */
 
-    //绘制矩形
+        //正三角形
+        for (var i = 0; i <=6; i++) {
+            for(var j = 1; j<=i; j++){
+                document.write('*');
+            }
+            document.write('<br>');
+        } 
 
-    //
-</script>
+        
+  </script>
 </html>
