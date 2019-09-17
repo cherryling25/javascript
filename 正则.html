@@ -65,5 +65,26 @@
         console.log(RegExp.$3); 
     } */
 
+
+    //替换
+    /* var str = '             dd   ke ijkl  ihe ';
+    console.log(str);  */
+    //console.log(str.trim());    //去除头尾的空格
+
+   // str = str.replace(/\s/g,'*');      //逗号前面是规律，后面是替换成的内容  
+    //str = str.replace(/^\s*/,'****8');  // 只将开头的空格替换
+    //str = str.replace(/\s*$/,'****8');  // 只将结尾的空格替换
+    //console.log(str); 
+
+
+    /* //分割
+    var str = "2010-03-29";
+    console.log(str.split('-'));    //将“-” 作为分隔点 */
+
+
+    var str = 'aaaabbbbaacccbb';
+    var reg = str.match(/a.*b/);    
+    console.log(reg[0]);
+
   </script>
 </html>
