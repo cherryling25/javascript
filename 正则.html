@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>正则</title>
+  </head>
+  <body></body>
+  <script>
+      //js中使用正则
+    /* var reg = new RegExp("ab[a-z]", "i"); // i 执行对大小写不敏感的匹配。
+    var str = "ABC";
+    console.log(reg.test(str)); // test()检索字符串中指定的值。返回 true 或 false。
+ */
+    //另一种：字面量形式
+   /*  var reg = /ab[a-z]/i;
+    var str = "ABC";
+    console.log(reg.test(str)); */
+
+    //匹配日期
+    /* var data = "2020-10-01";
+    var dataReg = /^\d{4}-\d{1,2}-\d{1,2}$/	//由四位数开始，中间的数是1到2位数，后面也是
+    console.log(dataReg.test(data)); */
+
+    //匹配手机号
+   /*  var phone = "15283918477";
+    var phoneReg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/	
+    console.log(phoneReg.test(phone)); */
+    
+    //exec() 提取
+    /* var qq = 'xiao:98371192,wig:2947429';
+    var reg = /\d+/g;   //全局提取数字
+    //var content = reg.exec(qq);
+    //console.log(content);    //提取了一个数组，只有第一个的话，就 content[0] ，提取第一个
+
+    //想全部一个个取出来
+    do{
+        var content = reg.exec(qq);
+        if(content){
+            console.log(content[0]);   
+        }
+    }while(content)
+ */
+
+    /* //match()提取多个
+    var qq = 'xiao:98371192,wig:2947429';
+    var reg = /\d+/g;   
+    var qqArray = qq.match(reg);    //qq 里的内容按照 reg 的规则去匹配
+    console.log(qqArray);    */
+
+
+    //分组提取
+    /* var data = "2020-10-01";
+    var dataReg = /^(\d{4})-(\d{1,2})-(\d{1,2})$/;	
+    if(dataReg.test(data)){
+        console.log(RegExp.$1); 
+        console.log(RegExp.$2); 
+        console.log(RegExp.$3); 
+    } */
+
+    /* var data = "cherryling@022.com";
+    var dataReg = /(\w+)@(\w+)\.(\w+)(\.\w+)?/;  
+    if(dataReg.test(data)){
+        console.log(RegExp.$1); 
+        console.log(RegExp.$2); 
+        console.log(RegExp.$3); 
+    } */
+
+  </script>
+</html>
