@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <title>正则</title>
   </head>
-  <body></body>
+  <body>
+      <input type="text" id="phone" placeholder="手机号">
+      <input type="text" id="email" placeholder="邮箱">
+      <input type="text" id="user" placeholder="用户名">
+      <input type="password" id="password" placeholder="密码">
+  </body>
   <script>
       //js中使用正则
     /* var reg = new RegExp("ab[a-z]", "i"); // i 执行对大小写不敏感的匹配。
@@ -81,10 +86,45 @@
     var str = "2010-03-29";
     console.log(str.split('-'));    //将“-” 作为分隔点 */
 
-
-    var str = 'aaaabbbbaacccbb';
-    var reg = str.match(/a.*b/);    
+    //贪婪模式
+    /* var str = 'aabbbbaaa';
+    var reg = str.match(/a.*b/);    //匹配以 a 开头的所有 b 
     console.log(reg[0]);
+
+    //非贪婪模式
+    var str = 'aabbbbcccbb';
+    var reg = str.match(/a.*?b/);    //匹配以 a 开头的一个 b 
+    console.log(reg[0]); */
+
+
+    /* //表单验证
+    //验证手机号
+    var phone = document.getElementById('phone');
+    //当光标离开输入框
+    phone.onblur = function(){
+        var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/
+        if(!reg.test(this.value)){  //不匹配
+            this.style.borderColor = 'red';
+        }else{  //匹配
+            this.style.borderColor = '#ccc';
+        }
+    } */
+
+    //既然验证都一样，进行封装一些公共的
+    function checkInput(eleId,reg){     //由外界传过来的参数
+        var element = document.getElementById(eleId);
+        element.onblur = function(){
+            if(!reg.test(this.value)){  //不匹配
+                this.style.borderColor = 'red';
+            }else{  //匹配
+                this.style.borderColor = '#ccc';
+            }
+        }
+
+    }
+    //需要验证的就调用这个方法
+    checkInput('phone',/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/);
+    checkInput('email',/^[1-9]\d{5}(?!\d)/);
 
   </script>
 </html>
