@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>节点之间的关系</title>
+    
+  </head>
+  <body>
+    <div>
+        <div id="divid">
+            输出整个div内容
+            <p>p标签</p>
+            <span id="spanid">
+                <a href="#">a链接</a>
+            </span>
+            <button>按钮</button>
+        </div>
+    </div>
+  </body>
+  <script>
+    var a = document.getElementById("spanid");
+    var b =  document.getElementById("divid");
+    /* console.log(a.parentNode);    //获取父节点
+    console.log(a.parentElement); 
+
+    console.log(a.nextSibling); //下一个兄弟节点，这个将换行也算进去了,所以输出的是换行标签
+    console.log(a.nextElementSibling); //这个就是下一个兄弟节点了
+ 
+    console.log(a.previousSibling); 
+    console.log(a.previousElementSibling); //上一个兄弟节点 
+    
+    console.log(b.firstChild);  
+    console.log(b.firstElementChild);   //获取标签中第一个子节点
+
+    console.log(b.lastChild);  
+    console.log(b.lastElementChild);    //获取标签中最后一个子节点*/
+
+    console.log(b.childNodes);     //获取所有的节点 
+    console.log(b.children);    //获取所有元素节点
+
+
+  </script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>节点的操作</title>
+    
+  </head>
+  <body>
+    <div>
+        <div id="divid">
+            输出整个div内容
+            <p id="pid">p标签</p>
+            <button id="btn">按钮</button>
+        </div>
+    </div>
+  </body>
+  <script>
+    var divid =  document.getElementById("divid");
+    //创建节点
+    var img = document.createElement('img');
+    img.src = 'tu.png';
+    //div.appendChild(img);   //将 img 追加到 div 元素内的尾部
+
+    var btn = document.getElementById('btn');
+    div.insertBefore(img,btn);    //在div 元素中的 button 标签之前插入 img
+
+
+    //console.log(b.children);    
+
+
+  </script>
+</html>
