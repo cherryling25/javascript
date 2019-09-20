@@ -7,15 +7,15 @@
   </head>
   <body>
     <div>
-        <div id="divid">
-            输出整个div内容
+        <div class="divclass">
             <p id="pid">p标签</p>
             <button id="btn">按钮</button>
+            <img src="#" alt="meiyoualt">
         </div>
     </div>
   </body>
   <script>
-    var divid =  document.getElementById("divid");
+    /* var divid =  document.getElementById("divid");
     //创建节点
     var img = document.createElement('img');
     img.src = 'tu.png';
@@ -23,10 +23,26 @@
 
     var btn = document.getElementById('btn');
     div.insertBefore(img,btn);    //在div 元素中的 button 标签之前插入 img
+ */
+
+    /* //克隆元素
+    var divclass =  document.getElementsByClassName("divclass")[0];
+    //var newdiv = divclass.cloneNode();  //浅克隆，就是只克隆当前元素，不会克隆这个元素里的其它元素
+    var newdiv = divclass.cloneNode(true);  //深克隆，包括当前元素及其内部所有元素
+    console.log(newdiv);   
+
+    document.body.appendChild(newdiv);  //克隆元素追加到文档中
+ */
 
 
-    //console.log(b.children);    
+    var img = document.getElementsByTagName('img')[0];
+    console.log(img);
+    
+    console.log(img.getAttribute('src')); // 如果没有这个属性，显示null ，查看属性更直接
+    console.log(img.getAttribute('alt')); 
+    console.log(img.src); // 什么都没显示
 
-
+    //删除属性
+   img.removeAttribute('alt');
   </script>
 </html>

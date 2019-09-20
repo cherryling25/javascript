@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>切换</title>
+    <style> 
+        #box{
+            width: 1200px;
+            margin: 0 auto;
+            border: 0px solid red;
+        }
+        img{
+            width: 50%;
+            height: 400px;
+        }
+    </style>
+  </head>
+  <body>
+        <div id="box">
+            <img id="icon" src="tu1.jpg">
+            <button id="prev">上一张</button>
+            <button id="next">下一张</button>
+        </div>
+  </body>
+  <script>
+    
+
+      var icon = document.getElementById('icon');
+      var prev = document.getElementById('prev');
+      var next = document.getElementById('next');
+
+        var currrntIndex = 1 ,minIndex = 1,maxIndex = 4;
+      prev.onclick = function(){
+          if(currrntIndex===minIndex){  //最小边界
+            currrntIndex = maxIndex;
+          }else{
+            currrntIndex--;
+          }
+        icon.setAttribute('src','tu'+ currrntIndex +'.jpg');
+        console.log(icon.src);
+      }
+
+      next.onclick = function(){
+        if(currrntIndex===maxIndex){  //最大边界
+            currrntIndex = minIndex;
+          }else{
+            currrntIndex++;
+          }
+        icon.setAttribute('src','tu'+ currrntIndex +'.jpg');
+        console.log(icon.src);
+        }
+  </script>
+</html>
