@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <title>多图大小切换</title>
     <style>
-        
+
       #content{
           width: 1200px;
+         
           margin:20px auto;
       }
 
@@ -20,6 +21,9 @@
          display: inline;
       }
 
+      img{
+        height: 500px;
+      }
      
     </style>
   </head>
@@ -29,21 +33,21 @@
     <p id="des">第一张图</p>
     <img id="big_img" src="tu1.jpg" style="width: 540px;" />
 
-    <ul>
+    <ul id="small">
       <li>
-        <a href="" title="第一张图">
+        <a href="tu1.jpg" title="第一张图">
           <img src="tu1.jpg" style="width: 100px; height: 80px" />
         </a>
       </li>
 
       <li>
-        <a href="" title="第二张图">
+        <a href="tu2.jpg" title="第二张图">
           <img src="tu2.jpg" style="width: 100px; height: 80px" />
         </a>
       </li>
 
       <li>
-        <a href="" title="第三张图">
+        <a href="tu3.jpg" title="第三张图">
           <img src="tu3.jpg" style="width: 100px; height: 80px" />
         </a>
       </li>
@@ -54,5 +58,24 @@
   </body>
   <script>
     
+    var des = document.getElementById('des');
+    var big = document.getElementById('big_img');
+    var small = document.getElementById('small');
+    var aList = small.getElementsByTagName('a');
+    //console.log(a);
+
+    
+    
+    //事件绑定
+    for (var i = 0; i < aList.length; i++) {
+        var a = aList[i];
+        //console.log(a);
+        a.onclick = function(){
+            des.innerText = this.title;
+            big.setAttribute('src',this.href);
+
+            return false;   // 结束 a 标签的所有内容，如 a 的 href 的跳转
+        }
+    } 
   </script>
 </html>
