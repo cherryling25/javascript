@@ -68,16 +68,23 @@
     var box = document.getElementById('box');
     var allLi = box.getElementsByTagName('li');
 
-     for (var i = 0; i < allLi.length; i++) {
+     /* for (var i = 0; i < allLi.length; i++) {
         var li = allLi[i];
         li.setAttribute('index',i+1); 
         li.onmousemove = function(){
             //console.log(this.getAttribute('index'));
             box.style.background = "url('tu"+ this.getAttribute('index') +".jpg') no-repeat";
         }
+    }  */
+
+    for (var i = 0; i < allLi.length; i++) {
+        var li = allLi[i];
+        li.index = i+1; 
+        li.onmousemove = function(){
+            //console.log(this.index);
+            box.style.background = "url('tu"+ this.index +".jpg') no-repeat";
+        }
     } 
-
-
     
   </script>
 </html>

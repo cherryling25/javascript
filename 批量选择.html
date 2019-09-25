@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>批量选择</title>
+    <style>
+    #content{
+      margin: 100px 400px;
+      border: 1px solid salmon;
+      padding: 50px;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <section>
+        <label><input type="checkbox"></label>
+        1. 一个人的风景<br>
+
+        <label><input type="checkbox"></label>
+        2. 光<br>
+
+        <label><input type="checkbox"></label>
+        3. 风景<br>
+
+        <label><input type="checkbox"></label>
+        4. 一个人<br>
+
+        <label><input type="checkbox"></label>
+        5. 太阳<br>
+
+      </section>
+      <br>
+      <section class="anniu">
+        <button id="allSelect">全选</button>
+        <button id="cancelSelect">取消选中</button>
+        <button id="invertSelect">反选</button>
+      </section>
+
+    </div>
+    
+  </body>
+  <script>
+    var inputs = document.querySelectorAll('input');
+
+    // 全选
+    $('allSelect').addEventListener('click',function(){
+      for (var i = 0; i < inputs.length; i++) {
+        var input = inputs[i];
+        input.checked = true;
+      }
+    })
+
+    //取消选中
+    $('cancelSelect').addEventListener('click',function(){
+      for (var i = 0; i < inputs.length; i++) {
+        var input = inputs[i];
+        input.checked = false;
+      }
+    })
+
+    //反选
+    $('invertSelect').addEventListener('click',function(){
+      for (var i = 0; i < inputs.length; i++) {
+        var input = inputs[i];
+        input.checked = !input.checked;
+      }
+    })
+
+
+    function $(id){
+      return typeof id === 'string' ? document.getElementById(id):null;
+    }
+     
+  </script>
+</html>
