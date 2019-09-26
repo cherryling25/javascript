@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片格式验证</title>
+</head>
+<body>
+    <p>上传图片：</p>
+    <input type="file" id="file">
+</body>
+<script>
+  
+    var file = document.getElementById('file');
+    file.onchange = function(){
+        //console.log(this.value); 
+        //console.log(this.files);    //查看 files 的属性
+        var path = this.value;       //获取它的值（也就是路径）
+        var suffix = path.substr(path.lastIndexOf('.'));        //从后截取 ‘.’ 后所有的
+        //console.log(suffix);  // 打印出 .jpg
+
+        //统一转成小写
+        var lowerSuffix = suffix.toLowerCase();
+
+        if(lowerSuffix === '.jpg' ||lowerSuffix === '.png' ||lowerSuffix === '.gif'){
+            alert('right');
+        }else{
+            alert('error');
+        }
+    }
+   
+</script>
+</html>
