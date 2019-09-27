@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #tab{
+            border: 1px solid gray;
+            width: 494px;
+            margin: 100px 300px;
+            
+        }
+        #tab ul li.selected{
+            background-color: #fff;
+            border-left: 1px solid rgb(204, 202, 202);
+            border-right: 1px solid rgb(204, 202, 202);
+            border-bottom: none;
+            color: red;
+        }
+
+        #tab ul li.selected:last-child{
+            border-right: none;
+        }
+
+        #tab ul li.selected:first-child{
+            border-left: none;
+        }
+       
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+        }
+        #header ul{
+            display: flex;
+        }
+
+        #header li{
+            width: 330px;
+            padding: 10px 0;
+            background-color: #eee;
+            text-align: center;
+        }
+
+        #content{
+            display: flex;
+            height: 100px;
+        }
+        .dom{
+            display: none;
+            margin: 10px 0;
+        }
+
+        .dom li{
+            float: left;
+            width: 200px;
+            
+            border: 0px solid red;
+            text-align: center;
+            line-height: 38px;
+            margin: 5px 20px 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="tab">
+        <div id="header">
+            <ul class="ulclass">
+                <li class="selected">玫瑰</li>
+                <li>百合</li>
+                <li>牡丹</li>
+            </ul>
+        </div>
+
+        <div id="content">
+            <div class="dom" style="display: block">
+                <ul>
+                    <li><a href="#">你的🌹</a></li>
+                    <li><a href="">你的🌹</a></li>
+                    <li><a href="">你的🌹</a></li>
+                    <li><a href="">你的🌹</a></li>
+                </ul>
+            </div>
+
+            <div class="dom">
+                <ul>
+                    <li><a href="#">第二个🌹</a></li>
+                    <li><a href="">第二个🌹</a></li>
+                    <li><a href="">第二个🌹</a></li>
+                    <li><a href="">第二个🌹</a></li>
+                </ul>
+            </div>
+
+            <div class="dom">
+                <ul>
+                    <li><a href="#">你的🌹</a></li>
+                    <li><a href="">你的🌹</a></li>
+                    <li><a href="">你的🌹</a></li>
+                    <li><a href="">你的🌹</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+  window.onload = function(){
+      var allLis = $('header').getElementsByTagName('li');
+      var alldoms = $('content').getElementsByClassName('dom');
+      //console.log(allLis,alldoms);
+
+    //遍历监听
+    /* for (var i = 0; i < allLis.length; i++) {
+        var li = allLis[i];
+        (function(i){
+            li.onmouseover = function(){
+            //清除同级别的选中样式类
+            for (var j = 0; j < allLis.length; j++) {
+                allLis[j].className = '';
+                alldoms[j].style.display = 'none';
+            }
+            //设置当前的 li 标签选中样式
+            this.className = 'selected';
+            alldoms[i].style.display = 'block';
+            }
+        })(i)
+    } */
+        //另一种方式
+        for (var i = 0; i < allLis.length; i++) {
+        var li = allLis[i];
+        li.index = i;
+            li.onmouseover = function(){
+            //清除同级别的选中样式类
+            for (var j = 0; j < allLis.length; j++) {
+                allLis[j].className = '';
+                alldoms[j].style.display = 'none';
+            }
+            //设置当前的 li 标签选中样式
+            this.className = 'selected';
+            alldoms[this.index].style.display = 'block';
+            }    
+        }
+
+    function $(id){
+      return typeof id === 'string' ? document.getElementById(id):null;
+    }
+     
+  }
+    
+   
+</script>
+</html>

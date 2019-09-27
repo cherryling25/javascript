@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>发表评论</title>
+    <style> 
+       *{
+           margin: 0;
+           padding: 0;
+           list-style: none;
+       }
+
+       #box{
+           width: 800px;
+           border: 1px solid #eee;
+           margin: 100px auto;
+           padding: 20px;
+       }
+
+    #my_textarea{
+        width: 80%;
+        height: 120px;
+    }
+
+    #ulId{
+        margin: 20px 80px;
+    }
+
+    #ulId li{
+        border-bottom: 1px dashed rgb(0, 174, 255);
+        line-height: 44px;
+    }
+
+    #ulId li a{
+        float: right;
+    }
+    </style>
+  </head>
+  <body>
+       <div id="box">
+           <div class="box-tap">
+            <label>
+                发表评论：
+                <textarea name="" id="my_textarea" cols="60" rows="10"></textarea>
+            </label>
+            
+            <button id="btn">发表</button>
+           </div>
+
+           <ul id="ulId">
+            
+           </ul>
+       </div>
+  </body>
+  <script>
+    window.onload = function(){
+        $('btn').addEventListener('click',function(){
+            var content = $('my_textarea').value;
+            if(content.length === 0){
+                alert('请输入评论');
+            }
+
+            var li = document.createElement('li');
+            li.innerHTML = content + '<a href="javascript:;">删除</a>';
+            
+            $('ulId').insertBefore(li,$('ulId').children[0]);   //在 ul 元素中 li插入到ul 第一个子元素之前
+
+            //清空输入框
+            $('my_textarea').value = '';
+        })
+
+
+
+
+
+        function $(id){
+      return typeof id === 'string' ? document.getElementById(id):null;
+    }
+    }
+
+    
+
+      
+  </script>
+</html>
