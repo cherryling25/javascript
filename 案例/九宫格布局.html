@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+       <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+       #container{
+        width: 1400px;
+        margin: 0 auto;
+       }
+       
+      #top{
+          padding: 20px;
+
+      }
+
+      #main{
+          position: relative;
+      }
+      img{
+          width: 220px;
+          height: 300px;
+      }
+      button{
+          width: 50px;
+          height: 50px;
+      }
+
+      .box{
+          width: 220px;
+          height: 360px;
+          margin: 0 15px 15px 0;
+          background: #e8e8e8;
+      }
+    </style>
+</head>
+
+<body>
+   <div id="container">
+        <div id="top">
+            <button id="btn1">3列</button>
+            <button id="btn2">4列</button>
+            <button id="btn3">5列</button>
+        </div>
+
+        <div id="main">
+            <div class="box">
+                <img src="../tu1.jpg" alt="">
+                <h4>💓</h4>
+                <p>❤️❤️❤️</p>
+            </div>
+
+            <div class="box">
+                <img src="../tu1.jpg" alt="">
+                <h4>💓</h4>
+                <p>❤️❤️❤️</p>
+            </div>
+
+            <div class="box">
+                <img src="../tu1.jpg" alt="">
+                <h4>💓</h4>
+                <p>❤️❤️❤️</p>
+            </div>
+            <div class="box">
+                <img src="../tu1.jpg" alt="">
+                <h4>💓</h4>
+                <p>❤️❤️❤️</p>
+            </div>
+
+            <div class="box">
+                <img src="../tu1.jpg" alt="">
+                <h4>💓</h4>
+                <p>❤️❤️❤️</p>
+            </div>
+
+            <div class="box">
+                <img src="../tu1.jpg" alt="">
+                <h4>💓</h4>
+                <p>❤️❤️❤️</p>
+            </div>
+        </div>
+   </div>
+</body>
+<script>
+
+    window.onload = function(){
+        $('btn1').addEventListener('click',function(){
+            flex(3,$('main'));
+        })
+
+        $('btn2').addEventListener('click',function(){
+            flex(4,$('main'));
+        })
+
+        $('btn3').addEventListener('click',function(){
+            flex(5,$('main'));
+        })
+    }
+
+
+    function flex(allCols,parent){   //allCols(number 类型)  ，parent（object类型）
+        var boxW = 220,boxH = 360,margin = 15;
+        for (var i = 0; i < parent.children.length; i++) {
+            //console.log(parent.children);
+            //当前 盒子 的行和列
+            var row = Math.floor(i/allCols);
+            var col =  Math.floor(i%allCols);
+            //console.log(row,col); 
+            //盒子的定位
+            var currentBox = parent.children[i];
+            currentBox.style.position = 'absolute';
+            currentBox.style.left = col * (boxW + margin) +'px';     //当前盒子的列*(盒子的宽+边距)
+            currentBox.style.top = row*(boxH + margin) + 'px';         //当前盒子的行*(盒子的高+边距)
+        }
+    }
+ 
+    function $(id){
+      return typeof id === 'string' ? document.getElementById(id):null;
+    }
+</script>
+
+</html>

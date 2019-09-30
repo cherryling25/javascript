@@ -53,11 +53,13 @@
        </div>
   </body>
   <script>
+      //不足的点 1）评论字数多了，会超出，2）敏感字
     window.onload = function(){
         $('btn').addEventListener('click',function(){
             var content = $('my_textarea').value;
             if(content.length === 0){
                 alert('请输入评论');
+                return;
             }
 
             var li = document.createElement('li');
@@ -67,6 +69,15 @@
 
             //清空输入框
             $('my_textarea').value = '';
+
+            var as = li.getElementsByTagName('a');
+            //console.log(a);
+            for (var i = 0; i < as.length; i++) {
+                var a = as[i];
+                a.onclick = function(){
+                    this.parentNode.remove();
+                }
+            }
         })
 
 
