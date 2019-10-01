@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时间格式化</title>
+</head>
+<body>
+    <div id="divid"></div>
+</body>
+
+<script>
+    window.onload = function(){
+        var c = format(new Date());
+         console.log(c);
+
+
+        function format(d){
+            // 验证
+            if(!d instanceof Date){
+                return;
+            }
+
+            var year = d.getFullYear();
+            var month = d.getMonth()+ 1;
+            var date = d.getDate();
+            var hour = d.getHours();
+            var minute= d.getMinutes();
+            var second= d.getSeconds();
+
+            month = month < 10 ? '0' + month:month;
+            date = date < 10 ? '0' + date:date;
+            hour = hour < 10 ? '0' + hour:hour;
+            minute = minute < 10 ? '0' + minute:minute;
+            second = second < 10 ? '0' + second:second;
+
+            return year +'-' + month +'-' + date +' ' + hour +':' +minute +':' +second;
+           
+        }
+
+       
+    }
+</script>
+</html>
