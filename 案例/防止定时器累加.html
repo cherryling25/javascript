@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>防止定时器累加</title>
+    <style>
+        #box{
+            height: 100px;
+            width: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+
+<script>
+    window.onload = function(){
+        var box = document.getElementById('box');
+        var height = 0 , intervalId;
+
+        //监听鼠标进入      先清除后设置
+        box.onmousemove = function(){
+        //清除定时器
+        clearInterval(intervalId);
+
+        //设置定时器
+        intervalId = setInterval(function(){
+            height += 1;
+            console.log(height);
+        },1000);
+        
+        }
+        
+    }
+</script>
+</html>

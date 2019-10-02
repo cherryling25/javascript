@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>长图滚动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body{
+            background-color: black;
+        }
+
+        #box{
+            height: 400px;
+            width: 700px;
+            border: 1px solid red;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #pic{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #to_top, #to_bottom{
+            width: 100%;
+            height: 50%;
+            background: transparent;
+            position: absolute;
+            left: 0;
+            cursor: pointer;
+        }
+
+        #to_top{
+            top: 0;
+        }
+
+        #to_bottom{
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img id="pic" src="../kenan.jpeg" alt="">
+        <span id="to_top"></span>
+        <span id="to_bottom"></span>
+    </div>
+</body>
+
+<script>
+    window.onload = function(){
+        var box = document.getElementById('box');
+        var pic = document.getElementById('pic');
+        var to_top = document.getElementById('to_top');
+        var to_bottom = document.getElementById('to_bottom');
+        
+        var intervalId , num = 0;
+        to_top.onmouseover = function(){
+            //清除定时器
+            clearInterval(intervalId);
+
+            //设置定时器
+            intervalId = setInterval(function(){
+                num -= 10;
+
+                if(num > -1175){        //图片高度（1575px）减去可视区域的高度（400px）
+                    pic.style.top = num + 'px';
+                }else{
+                    clearInterval(intervalId);
+                }
+               
+            },20)
+        }
+
+        to_bottom.onmouseover = function(){
+            //清除定时器
+            clearInterval(intervalId);
+
+            //设置定时器
+            intervalId = setInterval(function(){
+                num += 10;
+
+                if(num <= 0){       
+                    pic.style.top = num + 'px';
+                }else{
+                    clearInterval(intervalId);
+                }
+               
+            },20)
+        }
+
+        //鼠标离开
+        box.onmouseout = function(){
+            //清除定时器
+            clearInterval(intervalId);
+        }
+    }
+</script>
+</html>
