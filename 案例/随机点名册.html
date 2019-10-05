@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>随机点名</title>
+    <style>
+      
+
+        body{
+            text-align: center;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <button id="start">开始</button>
+    <button id="end">结束</button>
+    <div id="name"></div>
+</body>
+
+<script>
+    window.onload = function(){
+        var start = document.getElementById('start');
+        var end = document.getElementById('end');
+        var name = document.getElementById('name');
+        
+        var intervalId = null;
+        var nameArray = ['肌肤','减减肥','降低看','张三'];
+        name.innerText = nameArray[0];
+
+        start.onclick = function(){
+            clearInterval(intervalId);
+            intervalId = setInterval(function(){
+                var s_index = parseInt(Math.random()*nameArray.length);
+                var s_name = nameArray[s_index];
+                name.innerText = s_name;
+
+            },20)
+        }
+
+        end.onclick = function(){
+            clearInterval(intervalId);
+        }  
+    }
+</script>
+</html>
