@@ -21,6 +21,23 @@
     window.onload = function(){
         var btn = document.getElementById('btn');
         var divid = document.getElementById('divid');
+
+        var intervalId = null,start = 0, step = 50, target = 499;
+        btn.onclick = function(){
+            clearInterval(intervalId);
+
+            intervalId = setInterval(function(){
+                start += step;
+                if(start >= target){    // 要规定范围，不能直接start === target
+                    start = target;
+                    clearInterval(intervalId);
+                }
+                //console.log(start);
+                divid.style.marginLeft = start + 'px';
+            },100);
+            
+               
+        }
        
     }
 </script>
