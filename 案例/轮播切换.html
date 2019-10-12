@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播切换</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
+        #box{
+            width: 322px;
+            height: 250px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+
+            position: relative;
+        }
+
+        .left,.right{
+            width: 60px;
+            height: 250px;
+            float: left;
+        }
+
+        .content{
+            width: 200px;
+            height: 250px;
+            float: left;
+            overflow: hidden;
+        }
+
+        li{
+            line-height: 37px;
+            text-align: center;
+            border-bottom:1px solid #ccc;
+        }
+
+        .left li:last-child,.right li:last-child{
+            border-bottom: none;
+        }
+        .current{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+   <div id="box">
+    <ul class="left">
+        <li class="current"><a href="#">美食1</a></li>
+        <li><a href="#">美食2</a></li>
+        <li><a href="#">美食3</a></li>
+        <li><a href="#">美食4</a></li>
+        <li><a href="#">美食5</a></li>
+       
+    </ul>
+
+    <div class="content">
+        <a href=""><img src="../tu1.jpg" width="200px" height="250px"></a>
+        <a href=""><img src="../tu2.jpg" width="200px" height="250px"></a>
+        <a href=""><img src="../tu3.jpg" width="200px" height="250px"></a>
+        <a href=""><img src="../tu4.jpg" width="200px" height="250px"></a>
+        <a href=""><img src="../tu1.jpg" width="200px" height="250px"></a>
+        <a href=""><img src="../tu2.jpg" width="200px" height="250px"></a>
+        <a href=""><img src="../tu3.jpg" width="200px" height="250px"></a>
+        <a href=""><img src="../tu4.jpg" width="200px" height="250px"></a>
+        <a href=""><img src="../tu1.jpg" width="200px" height="250px"></a>
+        <a href=""><img src="../tu2.jpg" width="200px" height="250px"></a>
+    </div>
+
+    <ul class="right">
+        <li><a href="#">美食6</a></li>
+        <li><a href="#">美食7</a></li>
+        <li><a href="#">美食8</a></li>
+        <li><a href="#">美食9</a></li>
+        <li><a href="#">美食10</a></li>
+    </ul>
+    
+   </div>
+</body>
+
+<script>
+    window.onload = function(){
+        var allLis = document.getElementsByTagName('li');
+        var allImgs = document.getElementsByTagName('img');
+       
+        //索引
+        var index = 0;
+
+        setInterval(function(){
+            //索引++
+            index += 1;
+            index %= 10;    // 0-9
+            //console.log(index);
+
+            //排他
+            for (var i = 0; i < allLis.length; i++) {
+                allLis[i].className = '';
+                allImgs[i].style.display = 'none';
+                
+            }
+
+            //处理选中的
+            allLis[index].className = 'current';
+            allImgs[index].style.display = 'block';
+
+        },1000)
+
+    }
+
+</script>
+</html>

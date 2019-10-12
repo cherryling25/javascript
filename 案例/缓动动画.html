@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓动动画</title>
+    <style>
+        #divid{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">开始动画</button>
+    <div id="divid"></div>
+</body>
+
+<script>
+    window.onload = function(){
+        var btn = document.getElementById('btn');
+        var divid = document.getElementById('divid');
+
+        //定义变量
+        var intervalId = null,start = 0, step = 50, target = 499;
+
+        //开始动画      起始值 += (结束值 - 起始值) * 缓动系数（0-1之间） 
+        btn.onclick = function(){
+            clearInterval(intervalId);
+
+            intervalId = setInterval(function(){
+                start += (target - start) * 0.2;
+                if(Math.round(start) >= target){   
+                    start = target;
+                    clearInterval(intervalId);
+                }
+                //console.log(start);
+                divid.style.marginLeft = start + 'px';
+            },100);
+            
+        }
+       
+    }
+
+</script>
+</html>
