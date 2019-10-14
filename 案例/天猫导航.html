@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>天猫导航</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        body{
+            background: pink;
+        }
+       
+        #nav{
+            width: 900px;
+            height: 63px;
+            background: url('') no-repeat #fff;
+            position: relative;
+            margin: 100px auto;
+            border-radius: 5px;
+        }
+
+        #nav ul{
+            position: relative;
+        }
+
+        #nav ul li{
+            list-style: none;
+            float: left;
+            width: 88px;
+            height: 63px;
+            text-align: center;
+            line-height: 70px;
+            cursor: pointer;
+        }
+
+        #t_cat{
+            width: 88px;
+            height: 63px;
+            background: url('../cat.png') no-repeat;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <span id="t_cat"></span>
+        <ul>
+            <li>节日狂欢</li>
+            <li>节日狂欢</li>
+            <li>节日狂欢</li>
+            <li>节日狂欢</li>
+            <li>节日狂欢</li>
+            <li>节日狂欢</li>
+        </ul>
+    </nav>
+    
+</body>
+<script>
+    window.onload = function(){
+
+        var nav = document.getElementById('nav');
+        var t_cat = document.getElementById('t_cat');
+        var ul = nav.children[1];
+        var allLis = ul.children;
+
+        //记录鼠标点击元素的位置
+        var beginX = 0;
+
+        for (var i = 0; i < allLis.length; i++) {
+            var li = allLis[i];
+            //监听鼠标进入
+            li.onmouseover = function(){
+                end = this.offsetLeft;
+            }
+            //监听鼠标按下时间
+            li.onmousedown = function(){
+                beginX = this.offsetLeft;   
+            }
+            //监听鼠标离开
+            li.onmouseout = function(){
+                end = beginX;
+            }
+            
+        }
+
+        //缓动动画
+        var begin = 0; end = 0;
+        setInterval(function(){
+            begin += (end-begin)*0.2;
+            t_cat.style.left = begin + 'px';
+        },10);
+    }
+   
+    
+</script>
+</html>
