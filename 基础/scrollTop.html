@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scrollTop</title>
+</head>
+<body>
+    <div style="height: 2000px; width:200px; background: red">
+
+    </div>
+</body>
+<script>
+    window.onscroll = function(){
+        //console.log(document.body.scrollTop);
+        
+        //console.log(document.compatMode);
+        //console.log(window.pageYOffset);
+        //console.log(document.body.scrollTop);
+
+        //全部兼容
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop|| document.body.scrollTop;
+        console.log(scrollTop);
+    }
+
+    
+</script>
+</html>
