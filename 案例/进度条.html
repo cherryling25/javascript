@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>进度条</title>
+    <style>
+        #progress{
+            margin: 100px 200px;
+        }
+
+        #progress_bar{
+            width: 600px;
+            background: #ccc;
+            height: 20px;
+            border-radius: 15px;
+            position: relative;
+        }
+        
+        #progress_value{
+            position: absolute;
+            left: 850px;
+            top: 100px;
+        }
+
+        span{
+            position: absolute;
+            left: 0px;
+            top: -2px;
+            width: 10px;
+            background: rgb(142, 25, 189);
+            height: 25px;
+            border-radius: 15px;
+        }
+
+        #progress_bar_fg{
+            background: pink;
+            height: 20px;
+            width: 0;
+            border-radius: 15px 0 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="progress">
+        <div id="progress_bar">
+            <div id="progress_bar_fg"></div>
+            <span></span>
+        </div>
+        <div id="progress_value">0%</div>
+    </div>
+    
+</body>
+<script>
+    window.addEventListener('load',function(){
+        var progress = document.getElementById('progress');
+        var progress_bar = progress.children[0];
+        var progress_value = progress.children[1];
+        var progress_bar_fg = progress_bar.children[0];
+        var mask = progress_bar.children[1];
+
+
+       /*  //监听鼠标在 mask 上按下
+        mask.onmousedown = function(e){
+            //获取按下的坐标
+            var pointX = e.pageX - mask.offsetLeft;
+            //监听鼠标的移动
+            document.onmousemove = function(e){
+                //获取水平方向移动的距离
+                var x = e.pageX - pointX;
+
+                if(x < 0){
+                    x = 0;
+                }else if(x > progress_bar.offsetWidth - mask.offsetWidth){
+                    x = progress_bar.offsetWidth - mask.offsetWidth;
+                }
+
+                //走起来
+                mask.style.left = x + 'px';
+                progress_bar_fg.style.width = x + 'px';
+                progress_value.innerText = parseInt(x / (progress_bar.offsetWidth - mask.offsetWidth)*100)+'%';
+                return false;
+            }
+        };
+
+        //监听鼠标松开
+        document.onmouseup = function(){
+            document.onmousemove = null;
+        } */
+
+        
+
+        /*
+        使用 addEventListener 事件，会同时触发多个事件，
+        将 test 方法单独提取出来，别的地方都可以调用
+        */
+        var pointX = 0;
+        function test(e){
+                //获取水平方向移动的距离
+                var x = e.pageX - pointX;
+
+                if(x < 0){
+                    x = 0;
+                }else if(x > progress_bar.offsetWidth - mask.offsetWidth){
+                    x = progress_bar.offsetWidth - mask.offsetWidth;
+                }
+
+                //走起来
+                mask.style.left = x + 'px';
+                progress_bar_fg.style.width = x + 'px';
+                progress_value.innerText = parseInt(x / (progress_bar.offsetWidth - mask.offsetWidth)*100)+'%';
+                return false;
+            };
+
+         //监听鼠标在 mask 上按下
+         mask.addEventListener('mousedown',function(e){
+            //获取按下的坐标
+            pointX = e.pageX - mask.offsetLeft;
+            //监听鼠标的移动
+            document.addEventListener('mousemove', test);
+            
+        });
+         
+        
+        //监听鼠标松开
+        document.addEventListener('mouseup',function(){
+            document.removeEventListener('mousemove',test);
+        })
+
+
+    })
+   
+    
+</script>
+</html>
