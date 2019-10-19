@@ -61,7 +61,7 @@
         var mask = progress_bar.children[1];
 
 
-       /*  //监听鼠标在 mask 上按下
+        //监听鼠标在 mask 上按下
         mask.onmousedown = function(e){
             //获取按下的坐标
             var pointX = e.pageX - mask.offsetLeft;
@@ -87,7 +87,7 @@
         //监听鼠标松开
         document.onmouseup = function(){
             document.onmousemove = null;
-        } */
+        }
 
         
 
@@ -95,7 +95,7 @@
         使用 addEventListener 事件，会同时触发多个事件，
         将 test 方法单独提取出来，别的地方都可以调用
         */
-        var pointX = 0;
+        /* var pointX = 0;
         function test(e){
                 //获取水平方向移动的距离
                 var x = e.pageX - pointX;
@@ -127,7 +127,7 @@
         document.addEventListener('mouseup',function(){
             document.removeEventListener('mousemove',test);
         })
-
+ */
 
     })
    
