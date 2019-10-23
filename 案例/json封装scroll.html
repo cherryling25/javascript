@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>json封装scroll</title>
+
+    <style>
+        body{
+            height: 1000px;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    //兼容各浏览器 scroll 的差异
+    function scroll(){
+        if(window.pageYOffset !== null){
+            return {
+                "top":window.pageYOffset,
+                "left":window.pageXOffset
+            }
+        }else if(document.compatMode == 'CSS1Compat'){
+            return {
+                "top":document.documentElement.scrollTo,
+                "left":document.documentElement.scrollLeft
+            }
+        }
+        
+        return {
+                "top":document.body.scrollTo,
+                "left":document.body.scrollLeft
+            }
+    }
+
+    //调用
+    window.addEventListener('scroll',function(){
+        console.log(scroll().top);
+    })
+</script>
+</html>
