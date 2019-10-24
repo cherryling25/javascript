@@ -14,7 +14,7 @@
             border: 1px solid gray;
             height: 70px;
             width: 360px;
-            background: url('tu1.jpg') no-repeat;
+            background: url('../tu1.jpg') no-repeat;
             padding-top: 360px;
             margin: 80px auto;
         }
@@ -35,9 +35,9 @@
   <body>
     <div id="box">
         <ul>
-            <li><img id="img1" src="tu1.jpg" /></li>
-            <li><img id="img2" src="tu2.jpg" /></li>
-            <li><img id="img3" src="tu3.jpg" /></li>
+            <li><img id="img1" src="../tu1.jpg" /></li>
+            <li><img id="img2" src="../tu2.jpg" /></li>
+            <li><img id="img3" src="../tu3.jpg" /></li>
         </ul>
     </div>
     
@@ -51,15 +51,15 @@
     var box = document.getElementById('box');
 
     img1.onmouseover = function(){
-        box.style.background = "url('tu1.jpg') no-repeat";
+        box.style.background = "url('../tu1.jpg') no-repeat";
     }
 
     img2.onmouseover = function(){
-        box.style.background = "url('tu2.jpg') no-repeat";
+        box.style.background = "url('../tu2.jpg') no-repeat";
     }
 
     img3.onmouseover = function(){
-        box.style.background = "url('tu3.jpg') no-repeat";
+        box.style.background = "url('../tu3.jpg') no-repeat";
     } */
 
 
@@ -88,7 +88,7 @@
 
     function changeImg(imgId,index){     // 改变传入标签的背景（imgId:string  index:number 类型）
         //console.log(imgId);
-        $(imgId).style.background = 'url("tu'+ index +'.jpg") no-repeat';
+        $(imgId).style.background = 'url("../tu'+ index +'.jpg") no-repeat';
         
     } 
 

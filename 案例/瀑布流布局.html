@@ -18,8 +18,6 @@
         }
 
         #main{
-            width: 70%;
-            margin: 0 auto;
             position: relative;
         }
 
@@ -52,6 +50,44 @@
     </div>
 </body>
 <script>
-   
+   window.onload = function(){
+       //实现瀑布流效果
+       waterFull('main','box');
+       
+
+
+   }
+
+   function waterFull(parent,child){    // sting 类型，sting 类型
+    //1.父盒子局中（父盒子宽 是 子盒子个数宽的和）
+    //1.1 获取标签
+    var allBox = document.getElementById(parent).getElementsByClassName(child);
+
+    //1.2获取其中一个子盒子的宽度
+    var boxWidth = allBox[0].offsetWidth;
+    //console.log(boxWidth);
+
+    //1.3 获取文档的宽度
+    var screenW =document.documentElement.clientWidth || document.body.clientWidth;
+    //console.log(screenW);
+
+    //1.4 求出列数（当前文档的宽度 / 子盒子的宽度 = 子盒子的个数）
+    var cols = parseInt(screenW / boxWidth);
+    console.log(cols);
+
+    //父盒子局中
+    var main = document.getElementById(parent);
+    main.style.width = cols * boxWidth + 'px';
+    main.style.margin = '0 auto';
+
+
+
+    //2. 子盒子定位
+    //2.1 定义变量
+    var heightArr = [];
+    //下标小于总列数，就处于一行
+    //遍历所有的盒子
+    
+   }
 </script>
 </html>
