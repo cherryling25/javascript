@@ -9,30 +9,30 @@
 </head>
 <body>
         <div id="app">
-                <ul id="example-2">
-                       
-                    <li v-for="(value,key ) in object">
-                            {{ value }} : {{ key }}
+                <ul id="example">
+                    <li v-for="todo in todos" v-if="!todo.isComplete">
+                        {{ todo.name }}
                     </li>
                 </ul>
         </div>
 </body>
 
 <script>
-
+    
 var vm = new Vue({
   el: '#app',
   data: {
-    object: {
-        title: 'How to do lists in Vue',
-      author: 'Jane Doe',
-      publishedAt: '2016-04-10'
-    }
+      todos:[
+      { name: 'Runoob' },
+      { name: 'Google' },
+      { name: 'Taobao' }
+      ],
       
-    
-  
-  }
+          
+  } 
 })
+
+
 
 </script>
 
