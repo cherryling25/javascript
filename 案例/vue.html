@@ -6,14 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>vue</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
 </head>
 <body>
         <div id="app">
-                <ul id="example">
-                    <li v-for="todo in todos" v-if="!todo.isComplete">
-                        {{ todo.name }}
-                    </li>
-                </ul>
+            <select v-model='selected'>
+                <option v-for='option in options' v-bind:value="option.value">
+                    {{option.text}}
+                </option>
+            </select>
+            <span>{{selected}}</span>
+
+            
+            <select v-model='selected'>
+                <option v-for='option in options' v-bind:value='option.value'>
+                    {{option.text}}
+                </option>
+            </select>
+            <span>{{selected}}</span>
+
+                <select v-model="selected">
+                    <option v-for='option in options' v-bing:value="option.value">
+                        {{option.text}}
+                    </option>
+                </select>
+            <span>{{selected}}</span> 
         </div>
 </body>
 
@@ -22,14 +39,15 @@
 var vm = new Vue({
   el: '#app',
   data: {
-      todos:[
-      { name: 'Runoob' },
-      { name: 'Google' },
-      { name: 'Taobao' }
-      ],
-      
-          
-  } 
+    selected:'A',
+    options:[
+        {text:'ling',value:'A'},
+        {text:'linEFg',value:'B'},
+        {text:'liFDFng',value:'C'},
+        
+
+    ]
+  }
 })
 
 
