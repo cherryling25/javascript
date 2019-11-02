@@ -10,27 +10,13 @@
 </head>
 <body>
         <div id="app">
-            <select v-model='selected'>
-                <option v-for='option in options' v-bind:value="option.value">
-                    {{option.text}}
-                </option>
-            </select>
-            <span>{{selected}}</span>
-
-            
-            <select v-model='selected'>
-                <option v-for='option in options' v-bind:value='option.value'>
-                    {{option.text}}
-                </option>
-            </select>
-            <span>{{selected}}</span>
-
                 <select v-model="selected">
-                    <option v-for='option in options' v-bing:value="option.value">
-                        {{option.text}}
+                    <option v-for='option in options' v-bind:value="option.value">
+                        {{option.name}}
                     </option>
                 </select>
             <span>{{selected}}</span> 
+
         </div>
 </body>
 
@@ -41,9 +27,9 @@ var vm = new Vue({
   data: {
     selected:'A',
     options:[
-        {text:'ling',value:'A'},
-        {text:'linEFg',value:'B'},
-        {text:'liFDFng',value:'C'},
+        {name:'ling',value:'A'},
+        {name:'linEFg',value:'B'},
+        {name:'liFDFng',value:'C'},
         
 
     ]
