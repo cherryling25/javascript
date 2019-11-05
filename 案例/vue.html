@@ -10,48 +10,23 @@
 </head>
 <body>
         <div id="app">
-                <select v-model="selected">
-                    <option v-for='option in options' v-bind:value='option.value'>
-                        {{option.name}}
-                    </option>
-                    <option value="abc">dong</option>
-                </select>
-            <span>{{selected}}</span> 
 
-
-            <input v-model.number="age" type="number">
-            <but-counter></but-counter>
+           <test></test>
             
         </div>
 </body>
 
 <script>
-Vue.component('but-counter',{
-    data:function(){
-        return {
-           count: 0
-        }
-    },
-    template: `<div><button v-on:click="count++">You clicked me {{ count }} times.</button>
-        <button v-on:click="count++">You clicked me {{ count }} times.</button>
-        <button v-on:click="count++">You clicked me {{ count }} times.</button>
-        <div>`
-})
-
 
 var vm = new Vue({
   el: '#app',
   data: {
-    selected:'A',
-    picked:false,
-    age:'',
-    options:[
-        {name:'ling',value:'A'},
-        {name:'linEFg',value:'B'},
-        {name:'liFDFng',value:'C'},
-        
-
-    ]
+    
+  },
+  components: {
+    test:{
+        template:'<h2>hi....</h2>'
+    }
   }
 })
 
@@ -59,8 +34,9 @@ var vm = new Vue({
 
 </script>
 
+
+
 <style>
-   
-   
+  
 </style>
 </html>
