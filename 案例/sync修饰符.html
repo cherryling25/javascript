@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>插槽</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+            <todo-list>
+                    <template v-slot:todo="{ todo }">   // 接收具体的插槽
+                      <span v-if="todo.isComplete"> // 过滤条件逻辑，true就显示，false就隐藏
+                          ✓  ✓  ✓  ✓
+                        </span>
+                        {{ todo.id }}-{{ todo.name }}   // 插槽内容
+                    </template>
+            </todo-list>
+    </div>
+</body>
+<script>
+  Vue.component('todo-list', {
+      template: ` 
+                <ul>
+                <li
+                    v-for="todo in filteredTodos"
+                    v-bind:key="todo.id"
+                >
+                    <slot name="todo" v-bind:todo="todo">   // name是插槽名 ，
+                            {{ todo.text }} // 后备内容，父组件没有提供插槽内容，就默认提供这个内容，有的话，就取代
+                    </slot>
+                    
+                </li>
+                </ul>
+                `,
+    data: function () {
+        return {
+            filteredTodos:[
+                {'id':1, 'name':'吴', 'text':'ling'},
+                {'id':2, 'name':'吴', 'text':'dong'},
+                {'id':3, 'name':'吴', 'text':'等级分 ling',isComplete:false},
+                {'id':4, 'name':'吴', 'text':'带饭卡'},
+                
+            ]
+              
+            
+            
+        }
+  }
+})
+
+    new Vue({
+        el: "#app",
+        data:{
+           
+        },
+        methods:{
+            
+        }
+        
+    });
+    
+</script>
+</html>
