@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+<style type="text/css">
+  
+
+</style>
+</head>
+<body>
+    
+    <audio src="happy.mp3" id="myaudio" controls="controls" loop="false" hidden="true">
+               
+            </audio>
+            <input type="button" onclick="autoPlay()" value="播放" />
+            <input type="button" onclick="closePlay()" value="关闭" />
+        
+</body>
+<script>
+  function autoPlay() {
+            var myAuto = document.getElementById('myaudio');
+            myAuto.play();
+        }
+        function closePlay() {
+            var myAuto = document.getElementById('myaudio');
+            myAuto.pause();
+            myAuto.load();
+        }
+
+
+
+</script>
+</html>
