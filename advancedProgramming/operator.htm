@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作符</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 减法操作符
+    /* console.log(5 - true);  //true 转换为 1
+    console.log(NaN - 1);   // 
+    console.log(5 - "");    // "" --> 0
+    console.log(5 - "2");   // "2" --> 2
+    console.log(5 - null);  // null --> 0 */
+
+    // 关系操作符
+    /* console.log("Brick" > "alphabet"); //false ,比较字符编码值
+    console.log("Brick".toLowerCase() > "alphabet".toLowerCase());  
+    //true，将两个数都转换为相同的大小写形式，才能进行真正的字母表顺序比较
+    
+    console.log("20" < "3");    // true，都是字符串，而字符串比较的是字符编码值（"2"的字符编码是50，"3"的是51）
+    console.log("20" < 3);  // false，此时字符串"20"转换为数值20
+
+    console.log(5 < "like");   // false, "like"不能转换为任何合理数值，因此转换成 NaN
+    console.log(NaN < 3);    
+    console.log(NaN >= 3);   // 任何操作数与 NaN 进行比较，都是false
+
+    console.log(5 > true); // true，true转换为 1 */
+
+
+    // 相等操作符
+    //1. 相等和不相等（先转换(强制转型)再比较）
+    /* console.log(false == 0);  //true， false转换为 0，true转换为 1
+    console.log(5 == "5");  // true, "5"转换为 5
+    console.log(null == undefined); // true
+
+    console.log(undefined == 0);    // false
+    console.log(null == 0);     // false ,null 和 undefined不能转换成其他任何值
+
+    console.log(NaN == "NaN");  // false
+    console.log(NaN == 5);   // false
+    console.log(NaN == NaN);   // false
+    console.log(NaN != NaN);   // true  有一个NaN，则相等操作符返回false，不相等操作符返回true。
+
+    //2. 全等和不全等（仅比较而不转换）推荐使用
+    console.log("55" === 55);   //false，不同的数据类型不相等
+    console.log("55" !== 55);   //true，不同的数据类型不相等
+    console.log(null === undefined); // false */
+
+
+    // 条件操作符
+    /* var num1 = 1;
+    var num2 = 3;
+    var max = (num1 > num2) ? num1 : num2;
+    console.log(max);   // 1>3 ? 1:3    false,选择num2的值 */
+
+
+    // 赋值操作符（把右侧的值赋给左侧的变量）
+   /*  var num = 10;
+    //复合赋值，简化赋值操作，没有任何性能提升
+    var num = 10;
+    num += 10;  // num = num + 10;     还有*= , /= , %= , -= , <<=(左移/赋值) , >>=(有符号右移/赋值) , >>>=(无符号右移/赋值)
+ */
+
+
+    // 逗号操作符
+    // 1. 声明多个变量
+   /*  function am(){
+        var num1 = 1,num2 = 2,num3 = 3;     // 都是局部变量
+        console.log(num3);  //3
+    }
+    am();
+    console.log(num1);  //1
+    console.log(num2);  //2 */
+
+    /* function am(){
+        var num1 = 1;   // 局部
+        num2 = 2;   //全局
+        num3 = 3;   //全局
+        console.log(num3);  
+    }
+    am();
+    console.log(num2);  
+    console.log(num3);  */ 
+
+    // 2. 赋值（总会返回表达式中的最后一项）
+    var num = (3, 2, 1 ,5 , 0); 
+    console.log(num);   // 0
+</script>
+</html>
