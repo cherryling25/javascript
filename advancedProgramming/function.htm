@@ -9,6 +9,75 @@
     
 </body>
 <script>
-    
+    //函数
+   /*  function sum(num1,num2){
+        return num1 + num2; 
+        alert("hello");     //永远不会执行，在执行完 return语句后停止并立即退出，位于return语句后的任何代码都不会执行
+    }
+    console.log(sum(1,2)); */
+    // 任何函数在任何时候都可以通过 return 语句后跟要返回的值来实现返回值
+    //另外，return语句也可以不带任何返回值。这种情况，函数在停止执行后返回 undefined 值
+
+
+  
+    //理解参数
+   /*  function sayHi(name,message){
+        alert( "hello" + name + message); 
+    }
+    console.log(sayHi("jack",13));  */
+    //也可以用下面这种不显示地使用命名参数  
+
+   /*  function sayHi(){
+        alert( "hello" + arguments[0] + arguments[1]); 
+    }
+    console.log(sayHi("jack",13)); */
+
+
+    // arguments 对象的 length 属性
+    /* function how(){
+        console.log(arguments.length);
+    }
+    how(1,2,3);     // 3
+    how();      // 0
+
+
+    // 利用length属性让函数能够接收任意个参数并实现适当功能
+    function doAdd(){
+        if (arguments.length == 1){
+            console.log(arguments[0]+10);
+        }else if(arguments.length == 2){
+            console.log(arguments[0]+arguments[1]);
+        }
+    }
+    doAdd(10);      // 20
+    doAdd(20,20);   // 40 */
+
+
+
+    // 命名参数与arguments 对象一起使用
+   /*  function add(num1,num2){
+        if (arguments.length == 1){
+            console.log( num1 + 10 );
+        }else if(arguments.length == 2){
+            console.log( arguments[0] + num2 );
+        }
+    }
+    add(10);      
+    add(20,20);  */
+    // 由于 num1 与 arguments[0]的值相同，所以可以互换使用
+
+
+
+    // arguments 的值永远与对应命名参数的值操持同步
+   /*  function add(num1,num2){
+        arguments[1] = 10; 
+        console.log( arguments[0] + num2 );
+    }
+    add(10,20);  */
+   /* 严格模式下无效。 arguments对象中的值会自动反映到对应的命名函数，所以修改arguments[1]，也就修改num2
+    内存是独立的，值会同步
+    如果只传入一个参数，arguments[1]设置的值不会反应到命名参数，因为arguments对象的长度是由传入的参数个数决定的 
+    没有传递值的命名参数被自动赋予 undefined 值
+    */
 </script>
 </html>

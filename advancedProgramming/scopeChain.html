@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域链</title>
+</head>
+<body>
+</body>
+<script>
+    //作用域链【搜索过程始终从作用域链的前端开始，然后逐级地向后回溯，直至找到标识符。(找不到就报错)】
+    /*  var color = "blue";
+     function changeColor(){
+         if(color === "blue"){  //之所以可以在函数内部访问变量color，就是因为可以在这个作用域链中找到它
+            color = "red";
+         }else{
+             color = "green";
+         }
+     }
+     changeColor();
+     console.log("color is now " + color); */
+
+
+     // 在局部作用域中定义的变量可以在局部环境中与全局变量互换使用
+     /* var color = "blue";
+     function changeColor(){
+         var anotherColor = "red";
+         function swapColors(){
+             var tempColor = anotherColor;
+             anotherColor = color;
+             color = tempColor;
+             //这里可以访问color, anotherColor, tempColor
+         }
+         swapColors();  //这里可以访问color, anotherColor, 但不能访问 tempColor
+     }
+     changeColor();     // 这里只能访问 color
+     console.log("color is now " + color); */
+
+     
+     //延长作用域链
+    /* function buildUrl(){
+        var qs = "?debug=true";
+        with(location){
+            var url = href + qs;
+        }
+        return url;
+    }
+    console.log(buildUrl()); */
+
+
+    //没有块级作用域
+   /*  if(true){
+        var color = "blue";
+    }
+    console.log(color); //"blue"
+    //if 语句中的变量声明添加到当前的执行环境(在这是全局环境)中。
+
+    for(var i =0 ;i<10; i++){
+        console.log(i); // 0-9  
+    }
+    console.log(i); // 10 */
+    // for 语句创建的变量i，即使在for循环结束后，也依旧存在于循环外部的执行环境中
+
+
+    //声明变量
+    //使用 var 变量会自动添加到最近的环境中
+    /* function add(num1,num2){
+        var sum = num1 + num2;
+        return sum;
+    }
+    var result = add(10,20);
+    console.log(result);    // 30
+    //console.log(sum);   //  sum is not defined,变量 sum 在外部是访问不到的
+
+
+    //没有var声明 ，该变量会自动被添加到全局环境
+    function add(num1,num2){
+        sum = num1 + num2;
+        return sum;
+    }
+    var result = add(10,20);
+    console.log(result);    // 30
+    console.log(sum);       // 30
+    //当add()执行结束后，sum也将可以访问到 */
+
+
+
+    //查询标识符,向上逐级查询与给定名字匹配的标识符
+    /* var color = "blue";
+    function getColor(){
+        return color;
+    }
+    console.log(getColor());   */  //"blue"
+
+
+    //如果局部环境存在着同名标识符，就不会使用位于父环境中的标识符
+    /* var color = "blue";
+    function getColor(){
+        var color = "red";
+        return color;
+    }
+    console.log(getColor()); */    //"red"
+
+
+</script>
+</html>
