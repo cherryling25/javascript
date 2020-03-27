@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>引用类型</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //创建 Object 实例的两种方式：
+    /* var person = new Object();
+    person.name = "jack"; */
+    /* 创建了 object 引用类型的一个新实例，然后把该实例保存在变量 person 中。
+    使用的构造函数是 Object，它只为新对象定义了默认的属性和方法。*/
+
+    //（2）对象字面量表示法
+    /* var person = {
+        name:"jack"
+    }
+    //使用字面量表示法时，属性名也可以使用字符串
+    var person = {
+        "name":"jack",
+        "age":12
+    } */
+
+
+    // 对象字面量向函数传递大量可选参数的首选方式
+    /* function displayInfo(args){
+        var output = "";
+        if(typeof args.name == "string"){
+            output += "Name:" + args.name + "\n";
+        }
+        if(typeof args.age == "number"){
+            output += "Age:" + args.age + "\n";
+        }
+        console.log(output);    
+    }
+    displayInfo({       // 传递多个可选参数
+        name:"jack",
+        age:20
+    });
+    displayInfo({
+        name:"cherry"
+    }) */
+
+
+    //访问对象属性的两种表示法
+    /* console.log(person["name"]);
+    console.log(person.name); */
+
+    // 使用方括号的优点：可以通过变量来访问属性
+   /*  var person = {
+        name : "jack"
+    }
+    var propertyName = "name";
+    console.log(person[propertyName]); */
+    
+    
+
+    // Array 类型
+    //1. 创建数组的两种方式：使用 Array 构造函数：也可省略 new 关键字
+    
+    /* var colors = new Array();
+    var colors = new Array(20);	   // 创建 length 值为 20 的数组
+    var colors = new Array("red", "blue", "green");		// 直接放入要包含的值
+
+    //2. 使用数组字面量表示法：由方括号表示，多个数组项之间逗号隔开
+    var colors = ["red", "blue", "green"];      // 创建一个包含3个字符串的数组
+    var names = [];     // 创建一个空数组 */
+
+
+   /*  // 设置和读取数组的值
+    var colors = ["red", "blue", "green"]; 
+    console.log(colors[0]);     // 显示第一项
+    colors[2] = "black";        // 修改第三项
+    colors[3] = "brown";        // 新增第四项
+
+
+    //可以通过设置length属性，从数组的末尾移除项或添加项
+    var colors = ["red", "blue", "green"]; 
+    colors.length = 2;
+    console.log(colors[2]); // undefined ，length长度设置为2，就移除最后一项  */
+
+
+    /* 检测数组
+    console.log(value instanceof Array);
+    如果网页中包含多个框架，那实际上就存在两个以上不同的全局环境，使用Array.isArray()
+    console.log(Array.isArray(value)); */
+
+
+    // 转换方法
+    /* var colors = ["red", "blue", "green"];
+    console.log(colors.toString());     //red,blue,green，返回数组中每个值的字符串形式，逗号隔开
+    console.log(colors.valueOf());      //["red", "blue", "green"]返回的还是数组
+    console.log(colors);    // ["red", "blue", "green"]
+    alert(colors);      // 由于 alert()要接收字符串参数，所以它会在后台调用 toString()方法
+    console.log(colors.toLocaleString());  */  // red,blue,green，经常返回与toString()和valueOf()相同的值，但也不总是如此
+
+
+    /* var person1 = {
+        toLocaleString:function(){
+            return 1;
+        },
+        toString:function(){
+            return 2;
+        }
+    };
+    
+    var person2 = {
+        toLocaleString:function(){
+            return 3;
+        },
+        toString:function(){
+            return 4;
+        }
+    }
+    var people = [person1,person2];
+    alert(people);      // 2,4      没写明用哪一个方法时，默认 toString()
+    alert(people.toString());   // 2,4
+    alert(people.toLocaleString());     //1,3
+     */
+
+
+     //使用 join() 方法，可以使用不同的分隔符来构建这个字符串
+    /*  var colors = ["red", "blue", "green",null];
+     console.log(colors.join("||"));    // red||blue||green||       null或undefined 以空字符串表示 */
+
+
+    //push()	接收任意数量的参数，添加到数组末尾，并返回修改后的数组长度
+    /* var colors = new Array();
+    var count = colors.push("red","green");
+    console.log(count);     // 2
+
+    //pop()	从数组末尾移除最后一项，减少数组的length值，返回移除的项
+    var item = colors.pop();
+    console.log(item);  //"grren"
+    console.log(colors.length);     //1
+ */
+
+
+    // shift() 移除数组中的第一个项并返回该项，同时数组长度减1
+    /* var colors = new Array();
+    var count = colors.push("red","green");
+    console.log(count);     // 2
+
+    var item = colors.shift();
+    console.log(item);      // "red"
+    console.log(colors.length);     // 1
+
+    // unshift()    在数组前端添加任意个项并返回新数组的长度
+    var colors = new Array();
+    var count = colors.push("red","green");
+    console.log(count);     // 2
+
+    var item = colors.unshift("jack");
+    console.log(item);      // 3
+    console.log(colors.length);     // 3 */
+
+
+    //reverse()    反转数组项的顺序 
+  /*   var values = [1,2,3,4,5];
+    console.log(values.reverse());  //[5, 4, 3, 2, 1] */
+
+    //sort()     默认情况下，最小的位于前面。sort()会调用每个数组项的 toString()转型，比较得到的字符串。
+    //即使数组中的每一项都是数值，比较的也是字符串
+    /* var v = [0,3,2,1,10];
+    console.log(v.sort());      //  [0, 1, 10, 2, 3] */
+
+    //sort()可以接收一个比较函数作为参数，以便我们指定哪个值位于哪个值前面
+    /* function compare(value1,value2){
+        if(value1 < value2){
+            return -1;
+        }else if(value1 > value2){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+    //再将其作为参数传递给 sort()即可
+    var v = [0,3,2,1,10];
+    console.log(v.sort(compare)); 
+    console.log(v);  */
+
+
+    // concat()     基于当前数组中的所有项创建一个新数组
+   /*  var colors = ["red", "blue", "green"];
+    var colors2 = colors.concat("yellow",["black"]);
+    console.log(colors);    // ["red", "blue", "green"] // 原来的数组不变
+    console.log(colors2);   // ["red", "blue", "green", "yellow", "black"] */
+    
+    /* // slice()         基于当前数组中的项创建一个新数组
+    var colors = ["red", "blue", "green","yellow","black"];
+    var colors2 = colors.slice(1);
+    var colors3 = colors.slice(1,4);
+    console.log(colors);    // ["red", "blue", "green","yellow","black"]
+    console.log(colors2);    // ["blue", "green", "yellow", "black"]
+    console.log(colors3);      // ["blue", "green", "yellow"] */
+
+
+    // indexOf()    从数组开头开始往后查找      lastIndexOf()    从数组的末尾开始向前查找
+    /* var numbers = [1,2,3,4,0,9,1,2];
+    console.log(numbers.indexOf(2));        // 查找到 2 在第1位
+    console.log(numbers.lastIndexOf(2));    // 查找到 2 在第1位
+
+    console.log(numbers.indexOf(2,3));        // 从第3位开始查找到 2的位置,在第7位
+    console.log(numbers.lastIndexOf(4,3));      // 从第3位开始查找到 4的位置,在第3位
+     */
+
+/* 
+     // every()
+     var numbers = [1,2,3,4,5,4,3,2,1];
+     var everyResult = numbers.every(function(item,index,array){    //传入every中的函数会接收3个参数：数组项的值，该项在数组中的位置和数组对象本身
+         return (item > 2);
+     });
+     console.log(everyResult);  // false，1不大于2
+
+     // some()
+     var someResult = numbers.some(function(item,index,array){
+         return (item > 2);
+     });
+     console.log(someResult);  // ture，该函数对任一项返回 true，则返回 true
+
+     //filter()
+     var filterResult = numbers.filter(function(item,index,array){ 
+         return (item > 2);
+     });
+     console.log(filterResult); // [3, 4, 5, 4, 3]，返回一个所有数值大于 2 的数组
+
+     //map()
+     var mapResult = numbers.map(function(item,index,array){    
+         return item * 2;
+     });
+     console.log(mapResult); //  [2, 4, 6, 8, 10, 8, 6, 4, 2]，返回这些乘积的数组
+
+     //forEach()    没有返回值，本质上与使用 for循环一样
+     numbers.forEach(function(item,index,array){   
+         //执行某些代码。 
+     }); */
+     
+
+
+
+    /*  // reduce()		从数组的第一项开始，逐个遍历到最后      这一次 prev是1，cur是2
+     var values = [1,2,3,4,5];
+     var sum = values.reduce(function(prev,cur,index,array){
+         return prev + cur;
+     });
+     console.log(sum);  // 15       所有值之和
+
+     //reduceRight()		从数组的末尾开始，向前遍历到第一项      ，这一次 prev是5，cur是4 */
+
+
+
+     // Date
+     /* var someDate = new Date(Date.parse("May 25,2004"));        // 为2004年5月 25日创建一个日期对象
+     console.log(someDate);     // Tue May 25 2004 00:00:00 GMT+0800 (China Standard Time)  
+
+     //Date.UTC()  同样返回相应日期的毫秒数
+     var y = new Date(Date.UTC(2000,0));
+     console.log(y);        // Sat Jan 01 2000 08:00:00 GMT+0800 (China Standard Time)  2000年 1月1日
+
+     var all = new Date(Date.UTC(2005,4,5,17,55,55));
+     console.log(all);  // Fri May 06 2005 01:55:55 GMT+0800 (China Standard Time)  2005年5月5日下午5:55:55
+
+     var a = Date.now();
+     console.log(a);
+
+     console.log(new Date(2001,0,1) < new Date(2001,1,1));  // true */
+
+
+    // Function 类型
+    // 由于函数仅仅是指向函数的指针，因此一个函数可能会有多个名字
+    /*  function sum(num1,num2){
+        return num1 + num2;
+    }
+    console.log(sum(10,10));    //20
+
+    var anotherSum = sum;
+    console.log(anotherSum(10,10));    //20
+
+    sum = null;
+    console.log(anotherSum(10,10));    //20 */
+
+
+    // 函数声明与函数表达式
+   /*  //函数声明提升到顶部
+    console.log(sum(10,10));
+    function sum(num1,num2){
+        return num1 + num2;
+    }
+    
+    // 函数表达式，必须等到解析器执行到它所在的代码行，才会真正被解释执行
+    console.log(sum1(10,10));
+    var sum1 = function (num1,num2){
+        return num1 + num2;     // 报错，sum1 is not a function
+    } 
+    //在执行到函数所在的语句之前，变量 sum 中不会保存有对函数的引用
+     */ 
+
+
+    // 像传递参数一样把一个函数传递给另一个函数，接收两个参数，一个是函数，第二个是传递给该函数的值
+    /* function callSomeFunction(someFunction,someArgument){
+        return someFunction(someArgument);
+    }
+
+    function add10(num){
+        return num + 10;
+    }    
+    var result = callSomeFunction(add10,10);    // 访问函数的指针而不执行函数的话，不带圆括号
+    console.log(result);    // 10   ，因为上面例子传递给callSomeFunction()的是 add10，而不是执行它们之后的结果 */
+    
+
+    //从一个函数中返回另一个函数
+    /* var data = [
+        {
+            name:"jack",
+            age:19
+        },
+        {
+            name:"cherry",
+            age:18
+        }
+    ];
+    data.sort(createComparisonFunction("name"));    // 按照name属性进行排序
+    console.log(data[0].name);      //cherry
+
+    data.sort(createComparisonFunction("age"));
+    console.log(data[0].name);      //cherry
+    
+    function createComparisonFunction(propertyName){    // 定义createComparisonFunction函数，接收一个属性名，再根据属性名创建一个比较函数
+        return function(obj1, obj2){
+            var value1 = obj1[propertyName];
+            var value2 = obj2[propertyName];
+            if(value1 < value2){    //升序
+                return -1;      // 第一个参数位于第二个之前，返回负数
+            }else if(value1 > value2){
+                return 1;
+            }else{
+                return 0;
+            }
+        };
+    } */
+
+
+    // arguments.callee
+    /* function factorial(num){
+        if(num <= 1){
+            return 1;
+        }else{
+            return num * factorial(num - 1);
+        }
+    }
+    console.log(factorial(2));      // 2
+    //这个函数的执行与函数名紧紧耦合了一起，为解除，可以像下列这样使用 arguments.callee
+    function factorial1(num){
+        if(num <= 1){
+            return 1;
+        }else{
+            return num * arguments.callee(num - 1);
+        }
+    }
+    console.log(factorial1(2));  */
+
+
+    //当在网页的全局作用域中调用函数时，this 对象引用的就是 window
+    /* window.color = "red";
+    var o = {color:"blue"};
+    function sayColor(){
+        alert(this.color);
+    }
+    sayColor(); //  "red"
+    o.sayColor = sayColor;  // 这个函数赋值给了哦 o 对象
+    o.sayColor();   //"blue"       调用时，this引用的是对象 o */
+
+
+    // 函数的caller属性
+    /* function outer(){
+        inner();
+    }
+    function inner(){
+        alert(inner.caller);
+    }
+    outer();
+    //返回outer()函数的源代码
+
+    //为了实现更松散的耦合，也可以通过 arguments.callee.caller 来访问相同的信息
+    function outer1(){
+        inner1();
+    }
+    function inner1(){
+        alert(arguments.callee.caller);
+    }
+    outer1(); */
+
+
+
+    // 函数属性和方法
+   /*  //length 属性   函数接收的命名参数的个数
+    function say(name){
+        alert(name);
+    }
+    function sum(num1,num2){
+        return num1 + num2;
+    }
+    function sayHi(){
+        alert("hi");
+    }
+    console.log(say.length); // 1
+    console.log(sum.length);   // 2
+    console.log(sayHi.length);  // 0 */
+
+
+    //apply()
+    /* function sum(num1,num2){
+        return num1 + num2;
+    }
+    function callSum1(num1,num2){
+        return sum.apply(this,arguments);   // 传入 arguments对象
+    }
+    function callSum2(num1,num2){
+        return sum.apply(this,[num1,num2]); // 传入数组
+    }
+    console.log(callSum1(10,10));   // 20
+    console.log(callSum2(10,20));   // 30 */
+
+    //call() 在使用时，第一个参数是 this，第二个是传递给函数的参数必须逐个列举出来
+    function sum(num1,num2){
+        return num1 + num2;
+    }
+    function callSum(num1,num2){
+        return sum.call(this,num1,num2);   
+    }
+    console.log(callSum(10,10));    // 20
+    // callSum()必须明确地传入每一个参数
+    
+</script>   
+</html>
