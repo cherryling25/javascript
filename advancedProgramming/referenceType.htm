@@ -426,14 +426,69 @@
     console.log(callSum2(10,20));   // 30 */
 
     //call() 在使用时，第一个参数是 this，第二个是传递给函数的参数必须逐个列举出来
-    function sum(num1,num2){
+    /* function sum(num1,num2){
         return num1 + num2;
     }
     function callSum(num1,num2){
         return sum.call(this,num1,num2);   
     }
     console.log(callSum(10,10));    // 20
-    // callSum()必须明确地传入每一个参数
+    // callSum()必须明确地传入每一个参数 */
+
+
+    //bind()   这个方法会创建一个函数的实例，其 this 值会被绑定到传给 bind 函数的值
+   /*  window.color = "red";
+    var o = {color:"blue"};
+    function sayColor(){
+        alert(this.color); 
+    }
+    var objSayColor = sayColor.bind(o); // sayColor()调用bind()并传入对象 o
+    objSayColor();  */ //  "blue" ，objSayColor()函数的 this 值等于o
+
+
+
+    //基本包装类型
+    /* var s1 = "some text";
+    var s2 = s1. substring(2);
+    console.log(s2);  */       // "me text"
+
+    //可以想象成下列代码,也适用Boolean, Number
+    /* var s1 = new String("some text");
+    var s2 = s1. substring(2);
+    s1 = null;
+    console.log(s2); */    // "me text"
+
+    //基本包装类型和引用类型的主要区别：对象的生存期
+    /* var s1 = "some text";
+    s1.color = "red";
+    console.log(s1.color);  // undefined */
+    
+    //String 类型
+    // charAt()
+    /* var stringValue = "hello world";
+    console.log(stringValue.charAt(1));     //  "e" ,返回字符串中索引是1的字符
+
+    // charCodeAt()
+    var string1Value = "hello world";
+    console.log(stringValue.charCodeAt(1));  */   // 输出"101" ，返回位置1的"e"的字符编码，也可以使用方括号，如：stringValue[1]
+    
+    // concat()     将一或多个字符串拼接起来，返回拼接得到的新字符
+    /* var stringValue = "hello";
+    var result = stringValue.concat("world");
+    console.log(result);    // "helloworld"
+    console.log(stringValue);       // "hello"  */     // 不会改变字符串本身的值
+
+    // slice() , substr , substring
+    //第一个参数指定字符串开始位置，
+    var stringValue = "hello world"; 
+    console.log(stringValue.slice(3));
+    console.log(stringValue.slice(3,7)); 
+
+    console.log(stringValue.substr(3)); 
+    console.log(stringValue.substr(3,7));
+
+    console.log(stringValue.substring(3));
+    console.log(stringValue.substring(3,7)); 
     
 </script>   
 </html>
