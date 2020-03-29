@@ -478,17 +478,44 @@
     console.log(result);    // "helloworld"
     console.log(stringValue);       // "hello"  */     // 不会改变字符串本身的值
 
-    // slice() , substr , substring
-    //第一个参数指定字符串开始位置，
-    var stringValue = "hello world"; 
-    console.log(stringValue.slice(3));
-    console.log(stringValue.slice(3,7)); 
+    // slice() , substr , substring     不会改变字符串本身的值
+    //第一个参数指定字符串开始位置，第二个参数表示子字符串到哪里结束
+    /* var stringValue = "hello world"; 
+    console.log(stringValue.slice(3));  // "lo world"  从第三个位置开始，返回选取后的元素
+    console.log(stringValue.slice(3,7));   // "lo w"   开始和结束的位置，第二个参数具体表示子字符串最后一个字符后面的位置
 
-    console.log(stringValue.substr(3)); 
-    console.log(stringValue.substr(3,7));
+    console.log(stringValue.substr(3));     // "lo world"  从第三个位置开始，返回选取后的元素
+    console.log(stringValue.substr(3,7));   // lo worl  // 第二个参数返回的字符的个数
 
-    console.log(stringValue.substring(3));
-    console.log(stringValue.substring(3,7)); 
-    
+    console.log(stringValue.substring(3));  // "lo world"
+    console.log(stringValue.substring(3,7));    // "lo w"   // 第二个参数具体表示子字符串最后一个字符后面的位置
+     */
+
+
+     // indexOf() 和 lastIndexOf()
+    /*  var stringValue = "hello world";
+     console.log(stringValue.indexOf("o"));     // 4   从前往后搜索有"o"的索引
+     console.log(stringValue.lastIndexOf("o"));    // 7  从末尾搜索有子字符串"o" 的位置
+     
+     // 两个方法可接受第二个参数，表示从字符串中的哪个位置开始搜索
+     var stringValue = "hello world";
+     console.log(stringValue.indexOf("o" , 6));     // 7
+     console.log(stringValue.lastIndexOf("o" , 6)); // 4 */
+
+     //trim()       创建一个字符串的副本，删除前置或后缀的所有空格，返回结果
+     /* var stringValue = "   hello world   ";
+     var trimmedString = stringValue.trim();
+     console.log(stringValue);   // "  hello world  "   
+     console.log(trimmedString);    // "hello world"    // 由于返回的是副本，原始字符串没变 */
+
+
+     //toLocaleUpperCase(),toUpperCase(),toLocaleLowerCase(),toLowerCase()
+     var stringValue = "hello world";
+     console.log(stringValue.toLocaleUpperCase());  // "HELLO WORLD"
+     console.log(stringValue.toUpperCase());    // "HELLO WORLD"
+     console.log(stringValue.toLocaleLowerCase());  // "hello world"    
+     console.log(stringValue.toLowerCase());    // "hello world"
+
+
 </script>   
 </html>
