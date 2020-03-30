@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面向对象的程序设计</title>
+</head>
+<body>
+    
+</body>
+ <script>
+    // [[writable]]
+     /* var person = {};
+    Object.defineProperty(person,'name',{
+        writable:false,
+        value:"jack"
+    })
+     console.log(person.name);
+     person.name = "cherry";
+     console.log(person.name);
+
+    var person = {};
+    person.name = "jack";
+    console.log(person.name);
+    person.name = "cherry";
+    console.log(person.name); */
+
+
+    // [[configurable]]
+    /* var person = {};
+    Object.defineProperty(person,'name',{
+        configurable:true,
+        value:"jack"
+    });
+     console.log(person.name);  // "jack"
+     delete person.name;
+     console.log(person.name);  // undefined */
+
+
+    // 一旦把属性定义为不可配置的，就不能再把它变回可配置的
+   /*  var person = {};
+    Object.defineProperty(person,'name',{
+        configurable:false,
+        value:"jack"
+    });
+    
+    // 抛出错误
+    Object.defineProperty(person,'name',{
+        configurable:true,  
+        value:"jack"
+    });
+    console.log(person.name);
+    delete person.name;
+    console.log(person.name); */
+
+
+    // 访问器属性   [[Get]]: 在读取属性时调用的函数  [[Set]]：在写入属性时调用的函数，默认undefined
+   /*  var book = {
+        _year:2004,     // _year前面的下划线是表示只能通过对象方法访问的属性
+        age: 10
+    };
+    Object.defineProperty(book,'year',{
+        get:function(){
+            return this._year;
+        },
+        set:function(newValue){
+        if(newValue > 2004){
+            this._year = newValue;
+            this.age += newValue - 2004;
+        }
+        }
+    });
+    book.year = 2005;
+    console.log(book.age);  // 2 */
+
+    // 定义多个属性。跟上面定义的唯一区别是这里的属性都是在同一时间创建的
+    /* var person = {};
+    Object.defineProperties(person,{
+        _year:{
+            value:2004
+        },
+        age:{
+            value:13
+        },
+        year:{
+            get:function(){
+                return this._year;
+            },
+            set:function(newValue){
+            if(newValue > 2004){
+                this._year = newValue;
+                this.age += newValue - 2004;
+            }
+        }  
+    }
+    }); */
+
+
+
+    // 读取属性的特性
+    /* var book = {};
+    Object.defineProperties(book,{
+        _year:{
+            value:2004,
+            enumerable:true
+        },
+        age:{
+            value:13
+        },
+        year:{
+            get:function(){
+                return this._year;
+            },
+            set:function(newValue){
+            if(newValue > 2004){
+                this._year = newValue;
+                this.age += newValue - 2004;
+            }
+        }  
+    }
+    });
+    var descriptor = Object.getOwnPropertyDescriptor(book,"_year");
+    console.log(descriptor.value);      // 2004
+    console.log(descriptor.configurable);   // false
+    console.log(descriptor.enumerable); // true */
+
+
+    // 工厂模式来创建对象，用函数封装
+    /* function createPerson(name,age,job){
+        var o = new Object();
+        o.name = name;
+        o.age = age;
+        o.job = job;
+        o.sayName = function(){
+            console.log(this.name);
+        };
+        return o;
+    }
+    var person1 = createPerson("jack",18,"Engineer");
+    //console.log(person1);
+    var person2 = createPerson("cherry",18,"Engineer");
+    // 函数createPerson()能根据接受的参数来构建一个包含所有必要信息的 person 对象。
+    //可以无数次调用这个函数，而每次它都会返回一个包含3个属性一个方法的对象 */
+
+
+    //  构造函数模式，解决像上面那种不能对象识别的问题
+    /* function Person(name,age,job){      // 构造函数名首字母大写
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.sayName = function(){
+            console.log(this.name);
+        };
+    }
+    var person1 = new Person("jack",18,"Engineer");
+    //console.log(person1);
+    var person2 = new Person("cherry",18,"Engineer");
+
+    // 可通过 instanceof 验证是否对象
+    console.log(person1 instanceof Object); // true
+    console.log(person1 instanceof Person); // true */
+
+
+    //原型模式
+    /* function Person(){  
+    }
+    Person.prototype.name = "jack"; // 将sayName()方法和所有属性直接添加到了Person的prototype属性中，构造函数变成了空函数
+    Person.prototype.age = 18;
+    Person.prototype.job = "Engineer";
+    Person.prototype.sayName = function(){
+        console.log(this.name);
+    };
+    var person1 = new Person(); // 通过调用构造函数来创建新对象，新对象具有相同的属性和方法
+    person1.sayName();      // "jack"
+
+    var person2 = new Person();
+    person2.sayName();      // "jack"
+    console.log(person1.sayName == person2.sayName);      // true
+
+
+    // 虽然在所有实现中都无法访问到[[prototype]]，但可以通过isPrototypeOf()方法确定对象之间是否存在这种关系
+    //从本质上，如果[[prototype]]指向调用isPrototypeOf()方法的对象（Person.prototype），那么就返回true
+    console.log(Person.prototype.isPrototypeOf(person1));   // true
+    console.log(Person.prototype.isPrototypeOf(person2));   // true
+
+    // Object.getPrototypeOf()，返回[[prototype]] 的值
+    console.log(Object.getPrototypeOf(person1) == Person.prototype);   // true
+    console.log(Object.getPrototypeOf(person1).name);   //"jack" */
+
+
+    // 虽然可以通过对象实例访问保存在原型中的值，但不能通过对象实例重写原型中的值
+   /*  function Person(){  
+    }
+    Person.prototype.name = "jack"; 
+    Person.prototype.age = 18;
+    Person.prototype.job = "Engineer";
+    Person.prototype.sayName = function(){
+        console.log(this.name);
+    };
+    var person1 = new Person(); 
+    var person2 = new Person();
+    person1.name = "cherry";
+    console.log(person1.name);  // "cherry" 来自实例，先在实例上搜索，如果有就返回而不必在搜索原型了
+    console.log(person2.name);  // "jack"   来自原型
+
+    //delete 操作符则可以完全删除实例属性，从而让我们重新访问原型中的属性
+    delete person1.name;
+    console.log(person1.name);		//"jack" ,  来自原型 */
+
+
+
+    /* // hasOwnProperty() 检测一个属性是存在实例中还是存在原型中。存在对象实例中，返回 true
+    function Person(){  
+    }
+    Person.prototype.name = "jack"; 
+    Person.prototype.age = 18;
+    Person.prototype.job = "Engineer";
+    Person.prototype.sayName = function(){
+        console.log(this.name);
+    };
+    var person1 = new Person(); 
+    var person2 = new Person();
+    console.log(person1.hasOwnProperty("name"));     // false
+
+    person1.name = "cherry";
+    console.log(person1.hasOwnProperty("name"));     // true
+
+    delete person1.name;       
+    console.log(person1.hasOwnProperty("name"));    // false */
+
+
+
+    //单独使用：in 操作符会在通过对象能够访问给定属性时返回 true ，无论该属性存在于实例中还是原型中
+    /* function Person(){  
+    }
+    Person.prototype.name = "jack"; 
+    Person.prototype.age = 18;
+    Person.prototype.job = "Engineer";
+    Person.prototype.sayName = function(){
+        console.log(this.name);
+    };
+    var person1 = new Person(); 
+    var person2 = new Person();
+    console.log(person1.hasOwnProperty("name"));     // false
+    console.log("name" in person1);  // true   通过person1 对象能够访问给定的name属性时，返回true，无论该属性存在于实例中还是原型中
+
+    person1.name = "cherry";
+    console.log(person1.hasOwnProperty("name"));     // true
+    console.log("name" in person1);     // true
+
+    delete person1.name;       
+    console.log(person1.hasOwnProperty("name"));    // false
+    console.log("name" in person1);     // true */
+
+
+    // 同时使用 hasOwnProperty() 和 in 操作符
+    /* function hasPrototypeProperty(object,name){     // hasPrototypeProperty存在原型中返回 true
+        return !object.hasOwnProperty(name) && (name in object);
+    }
+    function Person(){  
+    }
+    Person.prototype.name = "jack"; 
+    Person.prototype.age = 18;
+    Person.prototype.job = "Engineer";
+    Person.prototype.sayName = function(){
+        console.log(this.name);
+    };
+    var person = new Person(); 
+    console.log(hasPrototypeProperty(person, "name"));  // true  ，name 属性存在于原型中，因此hasPrototypeProperty()返回 true
+
+    person.name = "cherry";
+    console.log(hasPrototypeProperty(person, "name"));  // false */
+    
+
+
+    // 在使用 for-in 循环时，返回的是所有能够通过对象访问的，可枚举的属性。其中包括存在于实例中的，也包括存在于原型中的属性
+    // 屏蔽了原型中不可枚举属性(即将[[Enumerable]]标记为false的属性)的实例属性也会返回
+    
+
+    //要取得对象上所有可枚举的实例属性，使用 Object.keys()方法
+    /* function Person(){  
+    }
+    Person.prototype.name = "jack"; 
+    Person.prototype.age = 18;
+    Person.prototype.job = "Engineer";
+    Person.prototype.sayName = function(){
+        console.log(this.name);
+    };
+    var keys = Object.keys(Person.prototype);
+    console.log(keys);      // ["name", "age", "job", "sayName"]
+
+    var p1 = new Person();      // 通过 Person 的实例调用
+    p1.name = "ccc";
+    p1.age = 31;
+    var p1keys = Object.keys(p1);
+    console.log(p1keys);    //  ["name", "age"]， 返回的只包含name和age两个实例属性 */
+
+
+    // 要想得到所有实例属性，无论是否可枚举，都可以使用 getOwnPropertyNames()方法
+    /* function Person(){  
+    }
+    Person.prototype.name = "jack"; 
+    Person.prototype.age = 18;
+    Person.prototype.job = "Engineer";
+    Person.prototype.sayName = function(){
+        console.log(this.name);
+    };
+    var keys = Object.getOwnPropertyNames(Person.prototype);
+    console.log(keys);      //  ["constructor", "name", "age", "job", "sayName"] */
+
+
+    //前面的例子每添加一个属性和方法就要敲一遍 Person.prototype。 可以使用对象字面量来包含所有属性和方法
+    function Person(){  
+    }
+    Person.prototype = {
+        name :"jack",
+        age: 18,
+        job: "Engineer",
+        sayName:function(){
+            console.log(this.name);
+        }
+    };
+    // 但是有一个例外：constructor属性不再指向 Person。因为每创建一个函数，就会同时创建它的prototype对象。这个对象自动获得 constructor属性
+
+    
+ </script>
+</html>
