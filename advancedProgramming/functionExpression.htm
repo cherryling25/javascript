@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数表达式</title>
+</head>
+<body>
+</body>
+ <script>
+     // 函数声明     一个重要特征，函数声明提升。
+     /* sayHi();
+     function sayHi(){
+         console.log("hi");
+     }
+
+     //函数表达式
+     sayHi();       // 错误：函数还不存在
+     var sayHi = function(){
+        console.log("hi");
+     }; */
+
+     /* // 不能这样做，属于无效语法
+     if(condition){
+         function sayHi(){
+            console.log("hi"); 
+         }
+     }else{
+        function sayHi(){
+            console.log("yo"); 
+         }
+     }
+
+     // 但使用函数表达式，就没有什么问题了
+     var sayHi;
+     if(condition){
+            sayHi = function(){
+            console.log("hi");
+        };
+     }else{
+        sayHi = function(){
+        console.log("yo");
+     };
+     } */
+
+
+     //递归函数是在一个函数通过名字调用自身的情况下构成的
+     /* function factorial(num){
+         if(num<= 1){
+             return 1;
+         }else{
+             return num * factorial(num - 1);
+         }
+     }
+     console.log(factorial(4)); */
+
+
+     // 经典的递归阶乘函数
+     /* function factorial(num){
+        if(num<= 1){
+             return 1;
+         }else{
+             return num * factorial(num - 1);       // 改成：return num * arguments.callee(num - 1); 
+         }
+     }
+     var anotherFacrorial = factorial;
+     factorial = null;
+     console.log(anotherFacrorial(4)); */      // 出错！ factorial is not a function
+
+     // 是因为调用 anotherFacrorial()时，由于必须执行 factorial(),而 factorial已经不是一个函数，所有就会导致错误
+     // 这种情况下，使用 arguments.callee，是一个指向正在执行函数的指针
+
+
+
+     //但在严格模式下，不能访问 arguments.callee ，会导致错误。不过，可以使用命名函数表达式来达成相同的效果
+     /* var factorial = (function f(num){
+         if( num <= 1){
+             return 1;
+         }else{
+             return num * f(num - 1);
+         }
+     }); */
+     // 创建一个名为 f()的命名函数表达式，将它赋值给变量factorial。
+
+
+
+     // 闭包
+     /* function createComparisonFunction(propertyName){
+         return function(object1,object2){
+             var value1 = object1[propertyName];
+             var value2 = object2[propertyName];
+             if(value1 < value2){
+                 return -1;
+             }else if(value1 > value2){
+                 return 1;
+             }else{
+                 return 0;
+             }
+         };
+     }
+
+     function compare(value1,value2){
+        if(value1 < value2){
+            return -1;
+        }else if(value1 > value2){
+            return 1;
+        }else{
+            return 0;
+        }
+     }
+     var result = compare(5,10);
+     
+     var compare = createComparisonFunction("name");
+     var result = compare({name:"jack"},{name:"cherry"});
+      */
+
+
+      // 闭包与变量
+      // 作用域链的这种配置机制引出了一个副作用，即闭包只能取得包含函数中任何变量的最后一个值。闭包保存的是整个变量对象，而不是某个特殊的变量
+      /* function createFunction(){
+          var result = new Array();
+          for(var i = 0; i< 10; i++){
+            result[i] = function(){
+                return i;
+            };
+          }
+          return result;
+       }
+        console.log(createFunction());
+
+        var result = createFunction();
+            for (var i=0;i < result.length;i++) {
+                console.log(result[i]());   // 输出 10 个10
+        }
+         */
+     
+     // 通过创建另一个匿名函数强制让闭包的行为符合预期
+      /* function createFunction(){
+          var result = new Array();
+          for(var i = 0; i< 10; i++){
+            result[i] = function(num){
+                return function(){
+                    return num;
+                };
+            }(i);
+          }
+          return result;
+      }
+      console.log(createFunction());
+
+      var result = createFunction();
+      for(var i = 0; i< result.length; i++){
+          console.log(result[i]());         // 输出0-9
+      } */
+      // 由于函数的参数都是按值传递的，所以会将变量i的当前值复制给num，而在匿名函数内部，又创建并返回了一个访问num的闭包。
+      // 这样，result 数组中的每个函数都有自己num变量的一个副本
+
+
+
+      // 关于 this 对象
+      /* var name = "the window";
+      var object = {
+          name:"my object",
+          getName:function(){
+            return function(){
+                return this.name;
+            }
+          }
+      };
+      console.log(object.getName()()); */      // "the window"
+
+
+      /* var name = "the window";
+      var object = {
+          name:"my object",
+          getName:function(){
+            var that = this;
+            return function(){
+                return that.name;
+            }
+          }
+      };
+      console.log(object.getName()());      // "my object" */
+
+
+      // 即使是语法的细微变化，都有可能意外改变 this 的值
+      /* var name = "the window";
+      var object = {
+          name:"my object",
+          getName:function(){
+            return this.name;
+          }
+      };
+      console.log(object.getName());    // "my object"
+      console.log((object.getName)());    // "my object"
+      console.log((object.getName = object.getName)());  */// "the window"        先执行赋值，再调用赋值后的语句，值是本身，this的值不能得到维持
+ 
+      
+      // 模仿块级作用域：用作块级作用域的匿名函数的语法
+      /* (function(){
+        // 这里是块级作用域
+      })(); */
+
+
+
+      //私有作用域
+      /* function outputNumbers(count){
+          (function(){
+              for(var i = 0; i < count; i++){
+                  console.log(i);       // 0-10
+              }
+          })();
+          //console.log(i);       // 导致错误
+      }
+      console.log(outputNumbers(10));
+
+
+      // 如果没有使用闭包,可以在函数内部随处访问它
+      function outputNumbers(count){
+              for(var i = 0; i < count; i++){
+                  console.log(i);   // 0-10
+              }
+          console.log(i);       // 0-10
+      }
+      console.log(outputNumbers(10)); */
+
+
+
+      //在构造函数中定义特权方法
+      /* function MyObject(){
+          // 私有变量和私有函数
+          var privateVariable = 10;
+          function privateFunction(){
+              return false;
+          }
+
+          // 特权方法
+          this.publicMethod = function(){
+              privateVariable++;        // 在这里定义的特权访问访问私有变量和私有函数，进行操作，可以在外部调用它
+              return privateFunction();
+          };
+      }
+      var result = new MyObject();
+      console.log(result.publicMethod());   */ // false   调用
+
+
+      // 利用私有和特权成员，可以隐藏那些不应该被直接修改的数据
+     /*  function Person(name){
+        this.getName = function(){
+            return name;
+        };
+        this.setName = function(value){
+            name = value;
+        };
+      }
+      var person1 = new Person("jack");
+      console.log(person1.getName());    // "jack"
+      person1.setName("cherry");            
+      console.log(person1.getName());   // "cherry"
+
+      var person2 = new Person("aaaa");
+      console.log(person1.getName());    // "cherry"
+      console.log(person2.getName());   // "aaaa" */
+      // 定义的两个特权方法，在构造函数外部也可以使用
+
+
+
+      //第二种：静态私有变量
+      /* (function(){
+        var name = "";
+        Person = function(value){
+            name = value;
+        };
+
+        Person.prototype.getName = function(){
+            return name;
+        };
+        Person.prototype.setName = function(value){
+            name = value;
+        };
+      })(); 
+      var person1 = new Person("jack");
+      console.log(person1.getName());    // "jack"
+      person1.setName("cherry");            
+      console.log(person1.getName());   // "cherry"
+
+      var person2 = new Person("aaaa");
+      console.log(person1.getName());    // "aaaa"
+      console.log(person2.getName());   // "aaaa" */
+
+
+
+
+    
+        
+ </script>
+</html>
