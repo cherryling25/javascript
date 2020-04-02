@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //在全局作用域中声明的变量，函数都会变成 window 对象的属性和方法
+    /* var age = 10;
+    function hi(){
+        console.log(this.age);
+    }
+    console.log(window.age);    // 10
+    hi();       // 10
+    window.hi();        // 10 */
+
+
+    // 定义全局变量与在window对象上直接定义属性的区别：全局变量不能通过 delete 删除
+    /* var age = 10;
+    window.color = "red";
+    delete window.age;
+    delete window.color;
+    console.log(window.age);    // 10
+    console.log(window.color);  // undefined */
+
+
+    /* // screenLeft和 screenTop存在就取得这两个属性的值，不存在，就取得window.screenX和screenY
+    var leftPos = (typeof window.screenLeft == "number")? window.screenLeft : window.screenX;
+    var topPos = (typeof window.screenTop == "number")? window.screenTop : window.screenY;
+ */
+
+
+    //  窗口位置    浏览器窗口相对与屏幕左边和上边的位置
+    /* alert(screenLeft);  // 0
+    alert(screenTop);   // 23
+
+    alert(screenX);  // 0
+    alert(screenY);   // 23 */
+    
+    // 窗口大小
+    /* alert(innerWidth);  // 1440
+    alert(innerHeight); // 713    页面视图的大小*/
+
+    /* alert(outerWidth);  // 1440
+    alert(outerHeight);   // 824   浏览器本身的尺寸*/
+
+    //  DOM 提供的页面可见区域大小  （标准模式下）
+   /*  alert(document.documentElement.clientWidth);    // 1440
+    alert(document.documentElement.clientHeight);   // 713 */
+
+    // （混杂模式）
+    /* alert(document.body.clientWidth);    // 1440     没有!DOCTYPE 下跟标准模式下一样
+    alert(document.body.clientHeight);   // 713 */
+
+
+
+   /*  window.open("http://www.fj.com/","topframe");
+    // 等同于 <a href="http://www.fj.com" target ='topframe'></a>
+    // 第二个参数也可以是这些窗口名：_self , _parent , _top , _blank */
+
+
+    //setTimeout();     // 在指定的时间后执行代码
+    /* var timeoutId = setTimeout(function(){
+        console.log("hello");
+    },1000);
+
+    // 取消
+     clearTimeout(timeoutId); */
+
+
+     // setInterval()
+     /* var num = 0;
+     var max = 10;
+     var intervalId = null;
+     function inc(){
+         num++;
+         if(num == max){
+             clearInterval(intervalId);
+             alert("done");
+         }
+     }
+     intervalId = setInterval(inc, 1000); */
+
+
+     // 使用 setTimeout()实现上面的例子
+     /* var num = 0;
+     var max = 10;
+     function inc(){
+         num++;
+         if(num < max){
+             setTimeout(inc,1000);
+         }else{
+             alert("done");
+         }
+     }
+     setTimeout(inc,1000); */
+
+
+     // 系统对话框
+     /* alert();
+     confirm();
+     //用法：
+        if(confirm("Are you sure?")){
+            alert("yes");
+        }else{
+            alert("no");
+        }
+
+    prompt();   // 提示框   第一个参数：要显示给用户的文本提示和文本输入域的默认值(可以是一个空字符串)
+    prompt("what's your name?","Michael");  
+    var result = prompt("what's your name?","");  
+    if(result != null){
+        alert("welcome"+ result);
+    } */
+
+
+    
+    //检测插件
+    // 非ie
+    /* function hasPlugin(name){
+        name = name.toLowerCase();
+        for(var i = 0; i < navigator.plugins.length; i++){
+            if(navigator.plugins[i].name.toLowerCase().indexOf(name) > -1){
+                return true;
+            }
+        }
+        return false;
+    }
+    //检测 Flash
+    alert(hasPlugin("Flash"));
+
+    //  检测QuickTime
+    alert(hasPlugin("QuickTime")); */
+
+
+    // ie
+    /* function hasIEPlugin(name){
+        try{
+            new ActiveXObject(name);
+            return true;
+        }catch(ex){
+            return false;
+        }
+    }
+    alert(hasIEPlugin("ShockwaveFlash.ShockwaveFlash"));
+    alert(hasIEPlugin("QuickTime.QuickTime"));
+
+     */
+
+    // 鉴于IE 和 非 IE 检测插件的方法差别太大，因此典型的做法：针对每个插件分别创建检测函数
+    // 检测所有浏览器中的 Flash
+    function hasPlugin(name){
+        name = name.toLowerCase();
+        for(var i = 0; i < navigator.plugins.length; i++){
+            if(navigator.plugins[i].name.toLowerCase().indexOf(name) > -1){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function hasIEPlugin(name){
+        try{
+            new ActiveXObject(name);
+            return true;
+        }catch(ex){
+            return false;
+        }
+    }
+
+    function hasFlash(){
+        var result = hasPlugin("Flash");
+        if(!result){
+            result = hasIEPlugin("ShockwaveFlash.ShockwaveFlash");    // ShockwaveFlash.ShockwaveFlash 是IE中Flash的COM标识符
+        }
+         return result;
+    }
+
+    // 检测所有浏览器中的 QuickTime
+    function hasQuickTime(){
+        var result = hasPlugin("QuickTime");
+        if(!result){
+            result = hasIEPlugin("QuickTime.QuickTime"); 
+        }
+         return result;
+    }
+
+    // 检测Flash
+    alert(hasFlash());
+
+     // 检测QuickTime
+     alert(hasQuickTime());
+</script>
+</html>
