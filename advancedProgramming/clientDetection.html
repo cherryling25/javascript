@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>客户端检测</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 能力检测，，检测该函数是否存在
+     /* function getElement(id){
+         if(document.getElementById){
+             return document.getElementById(id);
+         }else if(document.all){
+             return document.all[id];
+         }else{
+             throw new Error("no way to retrieve element");
+         }
+     }
+     console.log(getElement("divid")); */
+
+
+     // 检测某个属性是否存在并不能确定对象是否支持排序，而是检测 sort 是不是一个函数
+    /*  var ar = [1,2,3];
+     function isSortable(object){
+         return typeof object.sort == "function";
+     }
+     console.log(isSortable(ar));   // true */
+
+
+    
+    /*  // 确认浏览器是否支持 Netscape 风格的插件
+     var hasNSPlugins = !!(navigator.plugins && navigator.plugins.length);
+
+     // 确认浏览器是否具有 DOM1 级规定的能力
+     var hasDOM1 = !!(document.getElementById && document.createElement && document.getElementsByTagName);
+ */
+
+
+     // 怪癖检测
+    /*  var hasEnumShadowsQuirk = function(){
+         var o= {toString : function(){}};
+         var count = 0;
+         for(var prop in o){
+             if(prop == "toString"){
+                 count++;
+             }
+         }
+         return (count > 1);
+     }(); */
+    
+</script>
+</html>
