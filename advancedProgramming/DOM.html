@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+<body>
+    <div id="divid" name="divname"><!--注释-->  hello world!</div>
+</body>
+<script>
+    //每个节点都有一个nodeType 属性，用于表明节点的类型
+/* 
+    var div = document.getElementById("divid");
+    console.log(div.nodeType);    // 1
+    // 说明div节点是Element类型
+
+    console.log(div.nodeName);    // div
+    // 元素的标签名
+
+    console.log(div.nodeValue);   // null
+    // 对于元素节点，nodeValue 的值始终为null
+
+    console.log(div.firstChild.nodeType);     // 8
+    // div 元素里的第一个节点是注释类型
+
+    console.log(div.firstChild.nodeValue);    // 注释
+    // div 元素里的第一个节点的值是注释
+
+    console.log(div.getAttribute("name"));  // divname
+    // 获取属性节点
+
+    console.log(div.getAttributeNode("name").nodeType); // 2
+    // 是属性类型
+
+    console.log(div.childNodes[1].nodeValue); // "  hello world!"
+    // div 中第二个节点的值，空格也算
+
+    console.log(document.nodeType);     // 9
+    // document  的节点类型是 文档类型 */
+
+
+
+    // childNodes 属性
+    /* var div = document.getElementById("divid");
+    console.log(div.childNodes[0]);     // <!--注释-->   获取div里的第一个子节点
+    console.log(div.childNodes.item(0));    // <!--注释-->
+    console.log(div.childNodes.length);     // 2 
+     */
+
+    //将 NodeList 对象转换为数组
+    // 在 IE8 及之前版本无效
+     /* var div = document.getElementById("divid");
+     var arr = Array.prototype.slice.call(div.childNodes,0);
+     console.log(arr);  
+
+     //  所有浏览器都可以
+     function convertToArray(nodes){
+        var array = null;
+        try{
+            array = Array.prototype.slice.call(node,0);     // 针对非 IE 浏览器
+        }catch(ex){
+            array = new Array();
+            for(var i = 0, len=nodes.length; i < len; i++){
+                array.push(nodes[i]);
+            }
+        }
+        return array;
+     }  
+     console.log(convertToArray(divid.childNodes));   */
+
+</script> 
+</html>
