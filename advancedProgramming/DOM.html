@@ -5,9 +5,24 @@
     <title>DOM</title>
 </head>
 <body>
-    <div id="divid" name="divname"><!--注释-->  hello world!</div>
+    <div id="divid" name="divname" data-my_special_attribute= "hello"><!--注释-->  hello world!</div>
+
+    <p name="my">p  paragraph</p>
 </body>
 <script>
+    /* var p = document.getElementsByTagName("p").namedItem('my');
+    console.log(p);
+
+    var a = document.getElementsByTagName("p")["my"];
+    console.log(a);
+
+    var b = document.getElementById("divid").tagName;
+    console.log(b);     // DIV */
+
+    var value = document.getElementById("divid").getAttribute("data-my_special_attribute");
+    console.log(value);
+    
+
     //每个节点都有一个nodeType 属性，用于表明节点的类型
 /* 
     var div = document.getElementById("divid");
@@ -68,5 +83,8 @@
      }  
      console.log(convertToArray(divid.childNodes));   */
 
+
+     //  
+    
 </script> 
 </html>
