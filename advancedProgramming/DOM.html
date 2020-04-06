@@ -8,21 +8,18 @@
     <div id="divid" name="divname" data-my_special_attribute= "hello"><!--注释-->  hello world!</div>
 
     <p name="my">p  paragraph</p>
+
+    <!-- <ul id="mylist">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul> -->
+    <ul id="mylist"><li>item 1</li><li>item 2</li><li>item 3</li></ul>
+
+    <div id="div1">hello</div>
+
 </body>
 <script>
-    /* var p = document.getElementsByTagName("p").namedItem('my');
-    console.log(p);
-
-    var a = document.getElementsByTagName("p")["my"];
-    console.log(a);
-
-    var b = document.getElementById("divid").tagName;
-    console.log(b);     // DIV */
-
-    var value = document.getElementById("divid").getAttribute("data-my_special_attribute");
-    console.log(value);
-    
-
     //每个节点都有一个nodeType 属性，用于表明节点的类型
 /* 
     var div = document.getElementById("divid");
@@ -84,7 +81,70 @@
      console.log(convertToArray(divid.childNodes));   */
 
 
-     //  
+    /* var p = document.getElementsByTagName("p").namedItem('my');
+    console.log(p);
+
+    var a = document.getElementsByTagName("p")["my"];
+    console.log(a);
+
+    var b = document.getElementById("divid").tagName;
+    console.log(b);     // DIV
+
+    // 自定义属性
+    var value = document.getElementById("divid").getAttribute("data-my_special_attribute");
+    console.log(value); */
     
+
+     // 返回name属性
+    /* var a = document.getElementById("divid").attributes.getNamedItem("name");
+    console.log(a);     // name="divname"
+    
+    //  也可用方括号语法
+    var b = document.getElementById("divid").attributes["name"]; */
+    
+
+     /* // 遍历元素的属性      以name = "value"的格式返回
+    function outputAttributes(element){
+        var pairs = new Array(),
+        attrName,
+        attrValue,
+        i,
+        len;
+
+        for(i=0,len = element.attributes.length; i < len; i++){
+            attrName = element.attributes[i].nodeName;
+            attrValue = element.attributes[i].nodeValue;
+            pairs.push(attrName + "=\""+ attrValue + "\"");
+        }
+        return pairs.join("  ");
+    }
+    var div = document.getElementById("divid"); 
+    console.log(outputAttributes(div));     // id="divid"  name="divname"  data-my_special_attribute="hello"
+ */
+
+
+
+    // 创建元素：
+    /* var creatediv = document.createElement("div");
+    creatediv.id = "myNewId";
+    creatediv.innerText = "div content";
+
+    console.log(creatediv.nodeName);    // DIV
+
+    // 新创建的元素要添加到文档的<body>中,浏览器才会呈现该元素
+    document.body.appendChild(creatediv); */
+
+
+    // 元素的子节点：
+    /* var li = document.getElementById("mylist").childNodes.length;
+    console.log(li); */
+
+    
+    // text 类型
+    var d = document.getElementById("div1").childNodes.length;
+    console.log(d); 
+
+    // 创建文本节点
+    var textNode = document.createTextNode("<strong>hello</strong>");
 </script> 
 </html>
