@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>DOM</title>
+    <style>
+
+    </style>
 </head>
 <body>
     <div id="divid" name="divname" data-my_special_attribute= "hello"><!--注释-->  hello world!</div>
@@ -141,10 +144,38 @@
 
     
     // text 类型
-    var d = document.getElementById("div1").childNodes.length;
+   /*  var d = document.getElementById("div1").childNodes.length;
     console.log(d); 
 
     // 创建文本节点
-    var textNode = document.createTextNode("<strong>hello</strong>");
+    var textNode = document.createTextNode("<strong>hello</strong>"); */
+
+
+    // 创建 <script>元素
+       /*  var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "index.js";
+        document.body.appendChild(script); */
+
+    // 用函数封装
+   /*  function loadScript(url){
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        document.body.appendChild(script);
+    }
+    loadScript("index.js");
+    // 调用这个函数来加载外部的JavaScript文件 */
+
+
+
+    // 动态创建link元素包含的外部文件
+    /* var link = document.createElement("link");
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.href = "style.css";
+    var head = document.getElementsByTagName("head")[0];
+    head.appendChild(link); */
 </script> 
+
 </html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 扩展</title>
+</head>
+<body>
+    <div class = "disabled username">..</div>
+
+    <button id="myButton">按钮</button>
+
+    <div id="mydiv" data-appId="123" data-myname="jack" style="height: 800px;border: 1px solid red;">
+        <ul id="ulId">
+            <li>item 1</li>
+        </ul>
+    </div>
+</body>
+<script>
+    /* // 取得body 元素
+    var body = document.querySelector("body");
+    console.log(body);
+
+    // ID为“myDiv” 的元素
+    var myDiv = document.querySelector("#myDiv");
+
+    // 类为 selected 的第一个元素
+    var selected = document.querySelector(".selected");
+
+    // 取得类为button 的第一个图像元素
+    var img = document.body.querySelector("img.button"); */
+
+
+    // 取得 div中所有的em元素
+    //var ems = document.getElementById("myDiv").querySelectorAll("em");
+   
+
+   // 添加current类
+   /* var div = document.getElementsByClassName("username")[0];
+   div.classList.add("current");
+   console.log(div); */
+
+    // 确定元素中是否包含既定的类名
+   /* if(div.classList.contains("bd")&& !div.classList.contains("disabled")){
+       alert("元素中包含了");
+   }else{
+       alert("no");
+   } */
+
+   // 迭代类名
+   /* for(var i= 0,len = div.classList.length; i < len; i++){
+       console.log(div.classList[i]);      
+       //console.log(div.classList.item(i));   // 也可以用item()
+   } */
+
+
+   /* var button = document.getElementById("myButton");
+   button.focus();
+   console.log(document.activeElement === button);  // true
+
+   //document.hasFocus() 方法       确定文档是否获得了焦点
+   console.log(document.hasFocus());    // true */
+
+
+   // 兼容模式
+  /*  if(document.compatMode == "CSS1Compat"){     // 标准模式
+       console.log("Standards mode");
+   }else{
+       console.log("Quirks mode");
+   } */
+
+   
+   // innerHTML  属性
+   /* var d = document.getElementById("mydiv");
+   console.log(d.innerHTML);
+
+   d.innerHTML = "<b>jdklf</b>";
+   console.log(d);  */
+
+
+  /*  var div = document.getElementById("mydiv");
+   var ul = document.getElementById("ulId");
+   console.log(div.outerHTML);
+
+   ul.outerHTML = "<p>jdklf</p>";       // 替换调用它的元素
+   console.log(div.outerHTML);      // div 里的ul替换了 */
+
+
+   // scrollIntoView()
+   /* var div = document.getElementById("mydiv");
+   div.scrollIntoView({
+    block: 'end',
+	behavior: 'smooth' 
+
+   }); */
+
+
+   
+</script>
+</html>
