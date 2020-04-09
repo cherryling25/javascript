@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件</title>
+</head>
+<body>
+    <input type="button" id="mybtn" value="userName">
+
+    <a href="http://www.baidu.com" id="mylink">百度</a>
+</body>
+<script>
+
+    // 在需要通过一个函数处理多个事件时，可以使用 type 属性
+    /* var btn = document.getElementById("mybtn");
+    var handler = function (event){
+        switch(event.type){
+            case "click":
+                console.log("clicked");
+                break;
+
+            case "mouseover":
+                event.target.style.backgroundColor = "red";
+                break;
+
+            case "mouseout":
+                event.target.style.backgroundColor = "";
+                break;
+        }
+    };
+    btn.onclick = handler;
+    btn.mouseover = handler;
+    btn.mouseout = handler; */
+
+
+    // 阻止特定事件的默认行为   preventDefault() 方法
+    /* var link = document.getElementById("mylink");
+    link.onclick = function(event){
+        event.preventDefault();
+    } */
+
+
+    // 取消事件的进一步捕获或冒泡       stopPropagation()
+    /* var btn = document.getElementById("mybtn");
+        btn.onclick = function(event){
+        console.log("clicked");	
+        event.stopPropagation();
+    };
+    document.body.onclick = function(event){
+        console.log("body clicked");
+    }; */
+    // 如果不调用stopPropagation()，就会在单击按钮时出现两次输出。阻止了事件进一步向document.body传播
+
+
+    var btn = document.getElementById("mybtn");
+    btn.onclick = function(){
+    var event = window.event;
+        console.log(event.type); 
+    };
+</script>
+</html>
